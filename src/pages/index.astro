@@ -1,16 +1,205 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CodeText from '../components/CodeText.svelte';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Henlo there</title>
-	</head>
-	<body>
-		<h1>Henlo there</h1>
-	</body>
-</html>
+<BaseLayout>
+	<section class="section cc-home-header">
+		<div class="container">
+		<div class="row row-no-gutters row-justify-between">
+			<div class="col col-no-gutters col-shrink col-md-12">
+			<div class="home_header_box">
+				<div class="bracket-image-wrapper"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" class="image-overlay"></div>
+				<div class="h1">Eetu<br>Rantanen</div>
+			</div>
+			<div class="home_header_box is-below">
+				<div class="h1 u-text-bold">Web<br>Developer</div>
+				<div class="description-box">
+				<h1 class="paragraph">Moro! I’m Eetu, A web developer based in Tampere, Finland.</h1>
+				</div>
+			</div>
+			<div class="home_header_box is-tools">
+				<div class="tool-box is-first">
+				<div class="logos_wrapper"><img src="images/html5.svg" loading="lazy" alt="" class="logo-image"><img src="images/css3.svg" loading="lazy" alt="" class="logo-image"><img src="images/js.svg" loading="lazy" alt="" class="logo-image"><img src="images/ts.svg" loading="lazy" alt="" class="logo-image"></div>
+				<div class="toolbox-text">languages</div>
+				</div>
+				<div class="tool-box">
+				<div class="logos_wrapper"><img src="images/svelte.svg" loading="lazy" alt="" class="logo-image"><img src="images/astro.svg" loading="lazy" alt="" class="logo-image"><img src="images/cfw.svg" loading="lazy" alt="" class="logo-image"><img src="images/webflow.svg" loading="lazy" alt="" class="logo-image"></div>
+				<div class="toolbox-text">tools</div>
+				</div>
+			</div>
+			</div>
+			<div class="col col-no-gutters col-shrink col-md-12">
+			  <CodeText client:load/>
+			</div>
+		</div>
+		</div>
+  	</section>
+	<section class="section cc-projects">
+		<div class="marquee">
+			<div class="marquee-content scroll">
+				<div>
+				<h2 class="h2 u-mb-0">projects</h2>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">web dev</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">projects</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">web dev</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+			</div>
+			<div class="marquee-content scroll">
+				<div>
+				<div class="h2 u-mb-0">projects</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">web dev</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">projects</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+				<div>
+				<div class="h2 u-mb-0">web dev</div>
+				</div>
+				<div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt=""></div>
+			</div>
+		</div>
+		<div class="row row-no-gutters row-tablet-invert">
+		<div class="col u-mb-0 col-no-gutters col-lg-7 col-md-12">
+			<div class="image-wrapper cc-projects is-first"><img src="images/Thumnail-large.jpg" loading="lazy" sizes="(max-width: 991px) 100vw, 58vw" srcset="images/Thumnail-large-p-500.jpg 500w, images/Thumnail-large-p-800.jpg 800w, images/Thumnail-large-p-1080.jpg 1080w, images/Thumnail-large-p-1600.jpg 1600w, images/Thumnail-large.jpg 1920w" alt="" class="full-image"></div>
+		</div>
+		<div class="col u-mb-0 col-no-gutters col-lg-5 col-md-12">
+			<div class="work-content-wrapper">
+			<div class="tag cc-type">freelance project</div>
+			<h3 class="u-mb-1">KiHy Klinikka</h3>
+			<p class="u-text-justify">Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum. Massa aliquet id eget tortor eget mauris vitae. Amet diam arcu pellentesque ullamcorper convallis varius in. Neque morbi magna dapibus tempus mi gravida iaculis turpis. Fusce turpis orci tincidunt massa. Ut mattis id tincidunt aliquam. Sed fusce nulla lectus at sodales faucibus eu.</p>
+			<div class="tags-wrapper">
+				<div class="tag">website design</div>
+				<div class="tag">website development</div>
+				<div class="tag">website i18n weglot</div>
+			</div>
+			<p class="u-text-justify">“Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum.“</p>
+			<div class="u-text-bold">Jussi Järvinen - KiHy Turku</div>
+			</div>
+		</div>
+		</div>
+		<div class="row row-no-gutters">
+		<div class="col u-mb-0 col-no-gutters col-lg-7 col-md-12">
+			<div class="work-content-container">
+			  <CodeText client:load/>
+			<div class="work-content-wrapper is-left">
+				<a href="https://www.kuasi.fi/" target="_blank" class="tag cc-type">kuasi project</a>
+				<h3 class="u-mb-1">Maptionnaire</h3>
+				<p class="u-text-justify">Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum. Massa aliquet id eget tortor eget mauris vitae. Amet diam arcu pellentesque ullamcorper convallis varius in. Neque morbi magna dapibus tempus mi gravida iaculis turpis. Fusce turpis orci tincidunt massa. Ut mattis id tincidunt aliquam. Sed fusce nulla lectus at sodales faucibus eu.</p>
+				<div class="tags-wrapper">
+				<div class="tag">website development</div>
+				<div class="tag">website i18n weglot</div>
+				<div class="tag">wordpress migration</div>
+				</div>
+				<p class="u-text-justify">“Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum.“</p>
+				<div class="u-text-bold">Anne-Mari Jääskeläinen - Maptionnaire</div>
+			</div>
+			</div>
+		</div>
+		<div class="col u-mb-0 col-no-gutters col-lg-5 col-md-12">
+			<div class="image-wrapper cc-projects"><img src="images/Thumnail-large.jpg" loading="lazy" sizes="(max-width: 991px) 100vw, 42vw" srcset="images/Thumnail-large-p-500.jpg 500w, images/Thumnail-large-p-800.jpg 800w, images/Thumnail-large-p-1080.jpg 1080w, images/Thumnail-large-p-1600.jpg 1600w, images/Thumnail-large.jpg 1920w" alt="" class="full-image"></div>
+		</div>
+		</div>
+		<div class="row row-no-gutters cc-border-bottom row-tablet-invert">
+		<div class="col u-mb-0 col-no-gutters col-lg-7 col-md-12">
+			<div class="image-wrapper cc-projects is-last"><img src="images/Thumnail-large.jpg" loading="lazy" sizes="(max-width: 991px) 100vw, 58vw" srcset="images/Thumnail-large-p-500.jpg 500w, images/Thumnail-large-p-800.jpg 800w, images/Thumnail-large-p-1080.jpg 1080w, images/Thumnail-large-p-1600.jpg 1600w, images/Thumnail-large.jpg 1920w" alt="" class="full-image"></div>
+		</div>
+		<div class="col u-mb-0 col-no-gutters col-lg-5 col-md-12">
+			<div class="work-content-wrapper">
+			<a href="https://www.kuasi.fi/" target="_blank" class="tag cc-type">kuasi project</a>
+			<h3 class="u-mb-1">ViisiPäivää</h3>
+			<p class="u-text-justify">Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum. Massa aliquet id eget tortor eget mauris vitae. Amet diam arcu pellentesque ullamcorper convallis varius in. Neque morbi magna dapibus tempus mi gravida iaculis turpis. Fusce turpis orci tincidunt massa. Ut mattis id tincidunt aliquam. Sed fusce nulla lectus at sodales faucibus eu.</p>
+			<div class="tags-wrapper">
+				<div class="tag">website development</div>
+				<div class="tag">web application development</div>
+				<div class="tag">wordpress migration</div>
+			</div>
+			<p class="u-text-justify">“Purus diam feugiat est lectus. Auctor velit in mattis mattis sed risus suspendisse leo nunc. Pretium amet blandit pellentesque tincidunt cursus. Tortor nunc nunc a feugiat elementum.“</p>
+			<div class="u-text-bold">Heikki Holopainen - ViisiPäivää</div>
+			</div>
+		</div>
+		</div>
+		<div class="row row-no-gutters cc-border-bottom">
+		<div class="col u-mb-0 col-no-gutters col-lg-5">
+			<div class="border-box"></div>
+		</div>
+		<div class="col u-mb-0 col-no-gutters col-lg-2"></div>
+		<div class="col u-mb-0 col-no-gutters col-lg-5">
+			<div class="works-link-wrapper">
+			<a href="#">see all works</a>
+			</div>
+		</div>
+		</div>
+	</section>
+	<section id="about" class="section cc-about">
+		<div class="row row-no-gutters">
+		<div class="col u-mb-0 col-no-gutters col-lg-5 col-sm-12">
+			<div class="about-content-wrapper is-left">
+			<h2 class="u-mb-0">worklife timeline</h2>
+			<div class="bored-text">got bored? <a href="#">skip</a>
+			</div>
+			<div class="bracket-image-wrapper cc-about"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" class="image-overlay"></div>
+			</div>
+		</div>
+		<div class="col u-mb-0 col-no-gutters col-lg-7 col-sm-12">
+			<div class="about-content-wrapper">
+			<h3 class="u-mb-1">teens <span class="eyebrow">2010-2015</span></h3>
+			<p class="u-text-justify u-mb-3">Born and raised in a relatively small place called Kangasala, <strong>Young eetu was an aspiring athlete in the sport of volleybal</strong>l. He played first as a setter and later as a spiker in the finnish league &amp; first division. Hes <strong>goal was to become a professional athlete</strong> playing abroad. He devoted hes life to sports, and <strong>everything else was secondary to him</strong>. being a lazy student, he graduated from high school with average scores later than everyone else. what does a man who’s going to play volleyball till he dies do with good grades? - he thought.</p>
+			<p class="u-text-justify u-mb-5">being a talented and motivated athlete, eetu <strong>found he’s way into finnish league at a young age of 16</strong>. the next couple of years passed <strong>as a semi professional athlete, making various side gigs</strong> and going through finnish army. There was <strong>no rush for eetu to think about adulthood and work</strong>, as there was still a light at the end of the tunnel for the athelte career.</p>
+			<h3 class="u-mb-1">young adult <span class="eyebrow">2015-2020</span></h3>
+			<p class="u-text-justify u-mb-3">years passed, and after couple of dissapointing seasons, <strong>eetu was faced with a nessessary realization. He wasn’t going to make it as a professional athlete.</strong> This realization was hard for him, as there was no plan b. <strong>It was time to start thinking about real work.</strong></p>
+			<p class="u-text-justify u-mb-3">Eetu decided to <strong>apply for a college in pietarsaari, being able to study remotely from Tampere</strong>, where he lived with his girlfriend and dog. He <strong>got accepted</strong>, and started the studies. First months went great, <strong>studying was feeling refreshing after a couple of years pause</strong> after highschool. but after a year of studies, <strong>Eetu felt this wasn’t for him</strong>. He didn’t want to spend 4 years studying for a degree he wasn’t sure what to do with. <strong>Eetu dropped out</strong> after 1 year of study.</p>
+			<p class="u-text-justify u-mb-3"><strong>One of the side gigs he worked on</strong> when playing volleyball <strong>was accounting</strong>. Being an <strong>organized problem solver in nature</strong>, it was a rewarding job, as there was something beautiful in getting something messy, and turning it to readable finance reports for the entrepreuners.</p>
+			<p class="u-text-justify u-mb-5"><strong>Eetu decided to get a degree for accounting.</strong> For him, It was a realtively easy process, as the side gigs of accounting helped him learn fast. After one year of school, <strong>he got himself a degree, and started the work as a bookkeeper.</strong> During school, Eetu was <strong>tinkering with branding, webdesign and web development as a hobby.</strong> Graphic design was a hobby for him from early teens, as he made some fancy graphics for various gaming related occasions. This was satisfying hobby for the <strong>creative side of eetus brain</strong>, which was a great balance for the systematic job of accounting.</p>
+			<h3 class="u-mb-1">adult <span class="eyebrow">2020-present</span></h3>
+			<p class="u-text-justify u-mb-3">After a year or two accounting, <strong>the day-to-day work was getting a bit too repetetive</strong> for Eetu. Working with entrepreuners, seeing their struggles and triumphs, <strong>Eetu started to think about starting hes own business</strong>. The hobbies of <strong>digital design &amp; web-development was feeling more and more interesting</strong>, and it started to feel like a possibility to make a career in it. Eetu had made a couple of sites with wordpress, but felt quite limited with it. But <strong>when he found out about a tool called Webflow</strong>, it felt like the limits were lifted off. <strong>He wen’t full force to learn this tool and decided to make a living making websites</strong> as a freelance entrepreuner.</p>
+			<p class="u-text-justify u-mb-3"><strong>Eetu pulled the trigger and started a business.</strong> First as a side-hustle still working in accounting, but soon enough the clientell got big enough to be able to quit his day-job and start to work on hes business full time. <strong>Making websites as a living felt like a dream-come-true for him.</strong></p>
+			<p class="u-text-justify u-mb-3">Couple of years passed, and the work was still fun and rewarding. But as fun and freeing it was to decide your own working hours, meeting new people and making all the decisions by yourself, <strong>Eetu started to miss co-operation and structure in his work-life.</strong></p>
+			<p class="u-text-justify u-mb-3"><strong>Eetu decided to start look for other web-agencies, that needed extra hands.</strong> Soon enough, <strong>he found Kuasi. A webflow development agency based in Turku, finland.</strong> Eetu and Kuasi agreed to work together, eetu was going to develop client sites for kuasi, and they handled all the rest (marketing, sales, design, client-communication). <strong>This allowed Eetu to focus his time to the thing he enjoyed the most, development.</strong> Learning new tools and languages as the projects got bigger.</p>
+			<p class="u-text-justify u-mb-3">Nowadays, <strong>Eetu calls himself not just a webflow developer, but a web developer (mainly front-end).</strong> Webflow gave Eetu the knowhow and <strong>deep understanding of HTML and css.</strong> Learning <strong>the basics of Javascript and typescript</strong> alongside with the <strong>svelte framework</strong> opened up a new world of possibilities in the world of Web dev. <strong>He knows he’s way around github</strong>, has <strong>built a couple of simple apis using cloudflare workers</strong>, and <strong>has made sites using astro.</strong> He has made a <strong>couple of web applications using low-code tools</strong> with some extra funtionalities provided by <strong>custom-written javascript.</strong></p>
+			<p class="u-text-justify u-mb-3"><strong class="highlight">He’s eager to learn more and more, always striving for being a better web developer.</strong></p>
+			</div>
+		</div>
+		</div>
+	</section>
+	<section class="section cc-cta">
+		<div class="container cc-narrow">
+		<div class="u-text-center u-text-white">
+			<div class="eyebrow">I’m currently looking for work as a freelance developer.</div>
+			<h2>Wan’t to chat?<br>I’d like that!</h2>
+			<a href="#" class="btn cc-cta w-inline-block">
+			<div>Shoot me a message</div>
+			</a>
+		</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(calc(-100% - 4rem)); /* match 1 rem to gap above */
+	}
+	}
+	.scroll {
+	animation: scroll 30s linear infinite;
+	}
+</style>
