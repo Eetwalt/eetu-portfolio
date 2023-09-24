@@ -1,0 +1,27 @@
+---
+import { fade } from 'astro:transitions';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import BlogPost from '../components/BlogPost.astro';
+
+const allPosts = await Astro.glob('../pages/posts/*.md');
+---
+
+<BaseLayout>
+	<div class="section cc-home-header">
+        <div class="container" transition:name="hero" transition:animate={fade({ duration: '0.4s' })}>
+          <div class="row row-justify-center">
+            <div class="col col-lg-6">
+              <div class="u-text-center u-mb-3">
+                <h1 class="h2" transition:name="hero-title">my two cents</h1>
+                <p transition:name="hero-desc">in this (micro) blog, if wan’t to share my experiences and thoughts about various subjects about my professional life. Take a peek, join the conversation or share with your audience</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate}/>)}
+          </div>
+        </div>
+    </div>
+    <CtaSection></CtaSection>
+</BaseLayout>

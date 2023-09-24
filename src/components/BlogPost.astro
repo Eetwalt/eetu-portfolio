@@ -1,0 +1,18 @@
+---
+const { title, url, pubDate } = Astro.props
+const { frontmatter } = Astro.props;
+---
+<div class="col col-lg-4">
+    <div transition:name="post-wrapper" class="card">
+      <div class="card-body">
+        <!--<div transition:name="post-tags" class="blog-tags">
+            {frontmatter.tags.map((tag: string) => (
+                <a href="#" class="tag-link">#{tag}</a>
+            ))}
+        </div>-->
+        <h3 transition:name="post-title">{title}</h3>
+        <a transition:name="post-button" href={url} class="btn cc-light w-button">please ellaborate</a>
+        <div transition:name="post-date" class="date-text">{pubDate}</div>
+      </div>
+    </div>
+  </div>

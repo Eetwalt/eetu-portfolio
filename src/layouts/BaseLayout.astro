@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import '../styles/webflow.css';
 import '../styles/normalize.css';
 import '../styles/global.css';
@@ -10,6 +12,7 @@ import Footer from '../components/Footer.astro';
     <head>
     <meta charset="utf-8">
     <title>Eetu portfolio site</title>
+    <ViewTransitions />
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="generator" content={Astro.generator} />
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">

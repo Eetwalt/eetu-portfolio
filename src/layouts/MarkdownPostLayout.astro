@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<BaseLayout>
+    <div class="section cc-home-header">
+        <div class="container">
+          <div class="row row-justify-center">
+            <div class="col col-lg-8">
+              <div transition:name="post-date" class="date-text cc-blogpage">{frontmatter.pubDate}</div>
+              <h1 transition:name="post-title" class="blog-heading">{frontmatter.title}</h1>
+              <div transition:name="post-wrapper" class="blog-content-wrapper">
+                <div class="blog-header">
+                  <div transition:name="post-tags" class="blog-tags">
+                    {frontmatter.tags.map((tag: any) => (
+                        <a href="#" class="tag-link">#{tag}</a>
+                    ))}
+                  </div>
+                  <a transition:name="post-button" href="#" class="btn cc-light cc-smaller w-button">Share on twitter</a>
+                </div>
+                <div class="blog-richtext w-richtext">
+                    <slot />
+                </div>
+                <a href="#" class="btn cc-light cc-smaller w-button">Share on twitter</a>
+              </div>
+              <div class="u-text-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+</BaseLayout>
