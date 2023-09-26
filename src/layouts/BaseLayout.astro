@@ -3,26 +3,79 @@ import { ViewTransitions } from 'astro:transitions';
 
 import '../styles/webflow.css';
 import '../styles/normalize.css';
-import '../styles/global.css';
+import '../styles/base.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
     <head>
-    <meta charset="utf-8">
-    <title>Eetu portfolio site</title>
-    <ViewTransitions />
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta name="generator" content={Astro.generator} />
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="images/webclip.png" rel="apple-touch-icon">
+        <meta charset="utf-8">
+        <title>{pageTitle}</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta name="generator" content={Astro.generator} />
+        <link href="images/black-icon-ICO.png" rel="shortcut icon" type="image/x-icon">
+        <link href="images/webclip-er.png" rel="apple-touch-icon">
+        <ViewTransitions />
     </head>
     <body>
-    <Navigation></Navigation>
-    <div class="page-wrapper cc-light">
-        <slot />
-    </div>
-    <Footer>
+        <Navigation></Navigation>
+        <div class="page-wrapper cc-light">
+            <slot />
+        </div>
+        <Footer>
     </body>
 </html>
+
+<script>
+    import { animate } from "motion"
+
+    let wrappers = document.querySelectorAll("#project-wrapper");
+
+    wrappers.forEach((wrapper) => {
+        wrapper.addEventListener("mouseenter",hoverIn);
+        wrapper.addEventListener("mouseleave",hoverOut);
+    
+        let childWrapper = wrapper.lastChild as HTMLElement;
+        let nameTag = childWrapper.firstChild as HTMLElement;
+        let typeTag = childWrapper.lastChild as HTMLElement;
+    
+        function hoverIn() {
+            animate(
+                nameTag,
+                {opacity: 1, left: "0.5rem"},
+                {
+                    duration: 0.5,
+                    delay: 0.2
+                }
+            )
+            animate(
+                typeTag,
+                {opacity: 1, right: "0.5rem"},
+                {
+                    duration: 0.5,
+                    delay: 0.2
+                }
+            )
+        }
+    
+        function hoverOut() {
+            animate(
+                nameTag,
+                {opacity: 0, left: "-2rem"},
+                {
+                    duration: 0.2
+                }
+            )
+            animate(
+                typeTag,
+                {opacity: 0, right: "-2rem"},
+                {
+                    duration: 0.2
+                }
+            )
+        }
+    })
+</script>

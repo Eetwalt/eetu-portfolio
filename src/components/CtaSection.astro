@@ -1,9 +1,9 @@
 ---
-
+const { ctaClass } = Astro.props;
 ---
 
-<section class="section cc-cta">
-    <div class="container">
+<section class={`section cc-cta ${ctaClass}`}>
+    <div class="custom-container">
         <div class="row row-justify-center">
             <div class="col col-lg-8 col-min-60 col-md-12">
             <div class="cta-card">

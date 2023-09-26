@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import ProjectGridCard from '../components/ProjectGridCard.astro';
+
+import { fade } from 'astro:transitions';
+
+const pageTitle = "Web Development Projects | Web Developer from Tampere";
+
+const allWorks = await Astro.glob("../pages/works/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	  <section id="work" class="section cc-projects">
+		<div class="workpage-work-grid">
+		  {allWorks
+			.slice() // Create a copy of the array to avoid mutating the original
+			.sort((postA, postB) => postA.frontmatter.order - postB.frontmatter.order) // Sort by the 'order' value
+			.map((post) => (
+			  <ProjectGridCard
+				url={post.url}
+				img={post.frontmatter.img}
+				alt={post.frontmatter.alt}
+				name={post.frontmatter.name}
+				type={post.frontmatter.type}
+				sizeClass={post.frontmatter.sizeclass}
+			  />
+			))}
+		</div>
+	  </section>
+	<CtaSection ctaClass="cc-home" />
+</BaseLayout>
+
+<style>
+	@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(calc(-100% - 4rem)); /* match 1 rem to gap above */
+	}
+	}
+	.scroll {
+	animation: scroll 30s linear infinite;
+	}
+</style>

@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My First Micro Blog Post Using Astro'
+title: 'My Second Micro Blog Post Using Astro'
 pubDate: '24/09/23'
-description: 'This is the first post of my new Astro blog.'
+description: 'This is the second post of my new Astro blog.'
 sizeclass: 'w2-h2'
 image:
     url: '../images/Thumnail-large.jpg'

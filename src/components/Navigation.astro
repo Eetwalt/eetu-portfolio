@@ -2,25 +2,26 @@
 
 ---
 <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="top-nav w-nav">
-    <div class="container">
+    <div class="custom-container">
       <div class="row row-justify-between">
         <div class="col col-shrink u-mb-0">
-          <nav role="navigation" class="nav-menu w-nav-menu">
-            <div class="navigation-logo-wrapper"><img src="images/white-icon.svg" loading="lazy" alt="" class="full-image cc-contain cc-nav-logo"></div>
-            <div class="nav-border"></div>
-            <a href="/" class="nav-link w-nav-link">Home</a>
-            <div class="nav-border"></div>
-            <a href="/#work" class="nav-link w-nav-link">work</a>
-            <div class="nav-border"></div>
-            <a href="/#about" class="nav-link w-nav-link">About</a>
-            <div class="nav-border"></div>
-            <a href="/blog" class="nav-link is-last w-nav-link">blog</a>
-          </nav>
+            <nav id="nav-menu" role="navigation" class="nav-menu">
+              <div class="navigation-logo-wrapper">
+                <img src="../images/white-icon.svg" loading="lazy" alt="Eetu Rantanen logo" class="full-image cc-contain cc-nav-logo"></div>
+              <div class="nav-border"></div>
+              <a href="/" class="nav-link w-nav-link">Home</a>
+              <div class="nav-border"></div>
+              <a href="/work" class="nav-link w-nav-link">work</a>
+              <div class="nav-border"></div>
+              <a href="/about" class="nav-link w-nav-link">About</a>
+              <div class="nav-border"></div>
+              <a href="/blog" class="nav-link is-last w-nav-link">blog</a>
+            </nav>
         </div>
         <div class="col col-shrink u-mb-0">
-          <div class="menu-button w-nav-button">
+          <button id="menu-button" class="menu-button w-nav-button">
             <div class="w-icon-nav-menu"></div>
-          </div>
+          </button>
           <a href="#" class="btn cc-secondary cc-nav w-inline-block">
             <div>Contact</div>
           </a>
@@ -28,3 +29,19 @@
       </div>
     </div>
 </div>
+
+<script>
+  // Get references to the button and navigation menu
+  const menuButton = document.getElementById('menu-button');
+  const navMenu : any = document.getElementById('nav-menu');
+
+  // Add a click event listener to the button
+  menuButton?.addEventListener('click', function () {
+    // Toggle the visibility of the navigation menu
+    if (navMenu?.style.display === 'flex') {
+      navMenu.style.display = 'none';
+    } else {
+      navMenu.style.display = 'flex';
+    }
+  });
+</script>

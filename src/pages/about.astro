@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section id="about" class="section cc-about">
+		<div class="row row-no-gutters">
+			<div class="col u-mb-0 col-no-gutters col-lg-5 col-sm-12">
+			  <div class="about-content-wrapper is-left">
+				<h2 transition:name="hero-title" class="h2 u-mb-0">worklife timeline</h2>
+				<div class="bracket-image-wrapper cc-about"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" class="image-overlay"></div>
+				<div transition:name="aboutImage" class="image-wrapper cc-about"><img src="images/eetu.rantanen.jpg" loading="lazy" sizes="(max-width: 767px) 45vw, (max-width: 991px) 24vw, 18vw" srcset="images/eetu.rantanen.jpg 500w, images/eetu.rantanen.jpg 800w, images/eetu.rantanen.jpg 1000w" alt="" class="full-image cc-portrait">
+				  <div class="image-overlay cc-about"></div>
+				</div>
+			  </div>
+			</div>
+			<div class="col u-mb-0 col-no-gutters col-lg-7 col-sm-12">
+			  <div class="about-content-wrapper">
+				<div class="story-section">
+					<h3 class="h3 u-mb-1">teens <span class="eyebrow">2010-2015</span></h3>
+					<p story-paragraph class="u-text-justify u-mb-3" >Born and raised in a relatively small place called Kangasala, <strong>Young eetu was an aspiring athlete in the sport of volleybal</strong>l. He played first as a setter and later as a spiker in the finnish league &amp; first division. Hes <strong>goal was to become a professional athlete</strong> playing abroad. He devoted hes life to sports, and <strong>everything else was secondary to him</strong>. being a lazy student, he graduated from high school with average scores later than everyone else. what does a man who’s going to play volleyball till he dies do with good grades? - he thought.</p>
+					<p story-paragraph class="u-text-justify u-mb-5">being a talented and motivated athlete, eetu <strong>found he’s way into finnish league at a young age of 16</strong>. the next couple of years passed <strong>as a semi professional athlete, making various side gigs</strong> and going through finnish army. There was <strong>no rush for eetu to think about adulthood and work</strong>, as there was still a light at the end of the tunnel for the athelte career.</p>
+				</div>
+				<div class="story-section">
+					<h3 class="h3 u-mb-1">young adult <span class="eyebrow">2015-2020</span></h3>
+					<p story-paragraph class="u-text-justify u-mb-3">years passed, and after couple of dissapointing seasons, <strong>eetu was faced with a nessessary realization. He wasn’t going to make it as a professional athlete.</strong> This realization was hard for him, as there was no plan b. <strong>It was time to start thinking about real work.</strong></p>
+					<p story-paragraph class="u-text-justify u-mb-5"><strong>Eetu decided to get a degree for accounting.</strong> For him, It was a realtively easy process, as the side gigs of accounting helped him learn fast. After one year of school, <strong>he got himself a degree, and started the work as a bookkeeper.</strong> During school, Eetu was <strong>tinkering with branding, webdesign and web development as a hobby.</strong> Graphic design was a hobby for him from early teens, as he made some fancy graphics for various gaming related occasions. This was satisfying hobby for the <strong>creative side of eetus brain</strong>, which was a great balance for the systematic job of accounting.</p>
+				</div>
+				<div class="story-section">
+					<h3 class="h3 u-mb-1">adult <span class="eyebrow">2020-present</span></h3>
+					<p story-paragraph class="u-text-justify u-mb-3">After a year or two accounting, <strong>the day-to-day work was getting a bit too repetetive</strong> for Eetu. Working with entrepreuners, seeing their struggles and triumphs, <strong>Eetu started to think about starting hes own business</strong>. The hobbies of <strong>digital design &amp; web-development was feeling more and more interesting</strong>, and it started to feel like a possibility to make a career in it. Eetu had made a couple of sites with wordpress, but felt quite limited with it. But <strong>when he found out about a tool called Webflow</strong>, it felt like the limits were lifted off. <strong>He wen’t full force to learn this tool and decided to make a living making websites</strong> as a freelance entrepreuner.</p>
+					<p story-paragraph class="u-text-justify u-mb-3"><strong class="highlight">He’s eager to learn more and more, always striving for being a better web developer.</strong></p>
+				</div>
+				</div>
+			</div>
+	</section>
+	<CtaSection ctaClass="" />
+</BaseLayout>
+<style>
+	[story-paragraph] {
+		opacity: 0;
+	}
+</style>
+<script>
+	import { inView, animate } from "motion";
+
+	let storySection = document.querySelectorAll(".story-section");
+	let storyParagraphs = document.querySelectorAll("[story-paragraph]");
+	console.log(storyParagraphs);
+	
+
+	storySection.forEach((section) => {
+		let sectionHeading = section.firstChild as HTMLElement;
+		let siblingParagraph = sectionHeading.nextElementSibling as HTMLElement;
+		let secondSiblingParagraph = siblingParagraph.nextElementSibling as HTMLElement;
+		inView(sectionHeading, () => {
+			animate(siblingParagraph, { opacity: 1 })
+		})
+		inView(siblingParagraph, () => {
+			animate(secondSiblingParagraph, { opacity: 1 })
+		})
+	})
+
+</script>

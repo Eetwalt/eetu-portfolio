@@ -8,7 +8,7 @@
         
         animate(
             codeText, 
-            { color: ["whitesmoke", "gray", "whistesmoke"] },
+            { color: ["red", "gray", "red"] },
             { 
               duration: 6,
               repeat: Infinity,

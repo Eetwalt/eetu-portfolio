@@ -1,0 +1,24 @@
+---
+const { url, img, alt, name } = Astro.props;
+---
+<div class="absolute h-full w-full bg-zinc-500/50 top-0 bottom-0 z-10 flex justify-center pt-48">
+  <div class="custom-container">
+    <div class="row row-justify-center">
+      <div class="col col-lg-8">
+        <div transition:name={`${url}-wrapper`} class="blog-content-wrapper">
+          <div class="blog-header">
+            <a transition:name="post-button" href="/work" class="btn cc-light cc-smaller w-button" style="margin-left: auto;">Close</a>
+          </div>
+          <h1 transition:name={`${url}-title`} class="blog-heading">{name}</h1>
+          <div class="image-wrapper cc-border u-mb-2">
+              <img style="max-height: 30rem;" transition:name={`${url}-image`} src={`../images/${img}`} loading="lazy" srcset={`../images/${img} 500w, ../images/${img} 800w, ../images/${img} 1080w, ../images/${img} 1600w, ../images/${img} 1920w`} alt={alt} class="full-image" />
+          </div>
+          <div class="blog-richtext w-richtext">
+              <slot />
+          </div>
+          <a href="#" class="btn cc-light cc-smaller w-button">Share on twitter</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
