@@ -2,13 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CodeText from "../components/CodeText.svelte";
 import CtaSection from "../components/CtaSection.astro";
-import ProjectGridCard from "../components/ProjectGridCard.astro";
+import WorkGrid from "../components/WorkGrid.astro";
+
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('works');
 
 import { fade } from "astro:transitions";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
-const allWorks = await Astro.glob("../pages/works/*.md");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -93,21 +96,7 @@ const allWorks = await Astro.glob("../pages/works/*.md");
         <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
       </div>
     </div>
-    <div class="home-work-grid">
-      {allWorks
-        .slice() // Create a copy of the array to avoid mutating the original
-        .sort((postA, postB) => postA.frontmatter.order - postB.frontmatter.order) // Sort by the 'order' value
-        .map((post) => (
-          <ProjectGridCard
-            url={post.url}
-            img={post.frontmatter.img}
-            alt={post.frontmatter.alt}
-            name={post.frontmatter.name}
-            type={post.frontmatter.type}
-            sizeClass={post.frontmatter.sizeclass}
-          />
-        ))}
-    </div>
+    <WorkGrid works={works} gridClass="home-work-grid"/>
     <div class="row row-no-gutters cc-border-bottom">
       <div class="col u-mb-0 col-no-gutters col-lg-4">
         <div class="border-box"></div>
@@ -115,25 +104,25 @@ const allWorks = await Astro.glob("../pages/works/*.md");
       <div class="col u-mb-0 col-no-gutters col-lg-3"></div>
       <div class="col u-mb-0 col-no-gutters col-lg-5">
         <div class="works-link-wrapper">
-          <a href="#">see all works</a>
+          <a href="/work">see all works</a>
         </div>
       </div>
     </div>
   </section>
   <section id="about" class="section cc-about">
     <div class="row row-no-gutters">
-      <div class="col u-mb-0 col-no-gutters col-lg-4">
+      <div class="col u-mb-0 col-no-gutters col-lg-4 col-md-12">
         <div class="about-content-wrapper is-left-home">
-          <h2 class="home-about-title-text">hello. who is this?</h2>
+          <h2 class="h2 home-about-title-text">hello. who is this?</h2>
         </div>
       </div>
-      <div class="col u-mb-0 col-no-gutters col-lg-3">
+      <div class="col u-mb-0 col-no-gutters col-lg-3 col-md-12">
         <div class="image-wrapper cc-about-home">
           <img transition:name="aboutImage" src="images/eetu.rantanen.jpg" loading="lazy" sizes="(max-width: 767px) 13vw, (max-width: 991px) 20vw, 25vw" srcset="images/eetu.rantanen-p-500.jpg 500w, images/eetu.rantanen-p-800.jpg 800w, images/eetu.rantanen.jpg 1000w" alt="" class="full-image cc-portrait" />
           <div class="image-overlay cc-about"></div>
         </div>
       </div>
-      <div class="col u-mb-0 col-no-gutters col-lg-5">
+      <div class="col u-mb-0 col-no-gutters col-lg-5 col-md-12">
         <div class="home-about-content-wrapper">
           <div class="work-content-wrapper">
             <h2 class="h3 u-mb-1">About me</h2>
@@ -160,3 +149,4 @@ const allWorks = await Astro.glob("../pages/works/*.md");
     animation: scroll 30s linear infinite;
   }
 </style>
+

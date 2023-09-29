@@ -1,0 +1,17 @@
+---
+import ProjectGridCard from "./ProjectGridCard.astro";
+
+import type { CollectionEntry } from 'astro:content';
+type Props = {
+    works: CollectionEntry<'works'>[];
+    gridClass: string;
+}
+
+const { works, gridClass } = Astro.props;
+---
+
+<div class={`${gridClass}`}>
+    {works.map((work: any) => 
+        <ProjectGridCard work={work} transition:name="slide"/>
+    )}
+</div>

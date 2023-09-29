@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.svelte"
+
+import { fade } from "astro:transitions";
+
+const pageTitle = "Contact Eetu Rantanen | Web Developer from Tampere";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="section cc-home-header">
+        <div class="custom-container" transition:name="hero" transition:animate={fade({ duration: "0.4s" })}>
+          <div class="row row-justify-center">
+            <div class="col col-lg-8 col-md-12">
+              <div class="u-text-center u-mb-3">
+                <h1 class="h2" transition:name="hero-title">Contact me</h1>
+                <p transition:name="hero-desc" class="u-mb-3">Let me know what you need, I'll get back to you as soon as possible!</p>
+              </div>
+                <div class="blog-content-wrapper">
+                    <ContactForm client:load/>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</BaseLayout>

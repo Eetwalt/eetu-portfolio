@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/WorkPostLayout.astro
 name: 'Mikko Niiranen'
 sizeclass: 'w2-h1'
 type: 'freelance'

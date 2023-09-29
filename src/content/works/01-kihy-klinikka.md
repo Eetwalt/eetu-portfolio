@@ -1,12 +1,11 @@
 ---
-layout: ../../layouts/WorkPostLayout.astro
-name: 'Diarium'
+name: 'KiHy Klinikka'
 sizeclass: 'w2-h2'
-type: 'kuasi project'
+type: 'freelance'
 img: 'Thumnail-large.jpg'
 alt: 'KiHy Klinikka website on a tablet'
 tags: ["webdevelopment", "multisite", "weglot i18n", "webflow"]
-order: 6
+order: 1
 ---
 
 KiHy Klinikka work description here.

@@ -1,12 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My First Micro Blog Post Using Astro'
-pubDate: '24/09/23'
-description: 'This is the first post of my new Astro blog.'
-sizeclass: 'w2-h2'
-image:
-    url: '../images/Thumnail-large.jpg'
-    alt: 'The full Astro logo.'
+title: "My First Micro Blog Post Using Astro"
+pubDate: 2023-09-24
+description: "This is the first post of my new Astro blog."
+image: "../images/Thumnail-large.jpg"
+alt: "The full Astro logo."
 tags: ["productivity", "webdevelopment"]
 ---
 

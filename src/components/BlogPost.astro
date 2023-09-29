@@ -1,17 +1,24 @@
 ---
-const { title, url, pubDate, tags } = Astro.props
+import { type CollectionEntry } from 'astro:content';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+};
+
+const { post } = Astro.props;
 ---
+
 <div class="col col-lg-4">
-    <div class="card">
-      <div transition:name={`${url}-wrapper`} class="card-body">
-        <div transition:name={`${url}-tags`} class="blog-tags">
-          
-              <a href="#" class="tag-link">#{[tags]}</a>
-          
+  <div class="card">
+    <div transition:name={`${post.slug}-wrapper`} class="card-body">
+        <div transition:name={`${post.slug}-tags`} class="blog-tags">
         </div>
-        <h3 transition:name={`${url}-title`}>{title}</h3>
-        <a href={url} class="btn cc-light w-button">read post</a>
-        <div class="date-text">{pubDate}</div>
-      </div>
+        <h3 transition:name={`${post.slug}-title`} class="h3">{post.data.title}</h3>
+        <p class="line-clamp-2 u-mb-3">
+        {post.body}
+        </p>
+        <a href={'/posts/' + post.slug} class="btn cc-light w-button">read post</a>
+        <div class="date-text">{post.data.pubDate.toLocaleDateString('fi-FI')}</div>
     </div>
+  </div>
 </div>

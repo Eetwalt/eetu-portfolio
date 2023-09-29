@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout>
+  <div class="section cc-home-header">
+    <div class="custom-container">
+      <div class="row row-justify-center">
+        <div class="col col-lg-8">
+          <div class="date-text cc-blogpage">
+            {post.data.pubDate.toLocaleDateString("fi-FI")}
+          </div>
+          <h1 transition:name={`${post.slug}-title`} class="blog-heading">
+            {post.data.title}
+          </h1>
+          <div
+            transition:name={`${post.slug}-wrapper`}
+            class="blog-content-wrapper"
+          >
+            <div class="blog-header">
+              <div transition:name={`${post.slug}-tags`} class="blog-tags">
+                {
+                  post.data.tags.map((tag: any) => (
+                    <a href="#" class="tag-link">
+                      #{tag}
+                    </a>
+                  ))
+                }
+              </div>
+              <a href="#" class="btn cc-light cc-smaller w-button"
+                >Share on twitter</a
+              >
+            </div>
+            <div class="blog-richtext w-richtext">
+              <Content />
+            </div>
+            <a href="#" class="btn cc-light cc-smaller w-button"
+              >Leave a comment</a
+            >
+          </div>
+          <div class="u-text-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

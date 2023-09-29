@@ -1,12 +1,11 @@
 ---
-layout: ../../layouts/WorkPostLayout.astro
-name: 'Nisse Huttunen'
-sizeclass: 'w1-h2'
-type: 'freelance'
-img: 'Thumnail-large.jpg'
+name: 'Maptionnaire'
+sizeclass: 'w2-h2'
+type: 'kuasi project'
+img: 'maptionnaire-mockup.jpg'
 alt: 'KiHy Klinikka website on a tablet'
 tags: ["webdevelopment", "multisite", "weglot i18n", "webflow"]
-order: 7
+order: 3
 ---
 
 KiHy Klinikka work description here.

@@ -1,10 +1,21 @@
----
+<script lang="ts">
+  import { isNavOpen } from '../navStore';
 
----
+  function updateNavState () {
+    isNavOpen.set(window.innerWidth > 991);
+  }
+
+  window.addEventListener('resize', updateNavState);
+
+  updateNavState();
+</script>
+
 <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="top-nav w-nav">
     <div class="custom-container">
       <div class="row row-justify-between">
         <div class="col col-shrink u-mb-0">
+            <!-- svelte-ignore a11y-no-redundant-roles -->
+            {#if $isNavOpen}
             <nav id="nav-menu" role="navigation" class="nav-menu">
               <div class="navigation-logo-wrapper">
                 <img src="../images/white-icon.svg" loading="lazy" alt="Eetu Rantanen logo" class="full-image cc-contain cc-nav-logo"></div>
@@ -17,31 +28,17 @@
               <div class="nav-border"></div>
               <a href="/blog" class="nav-link is-last w-nav-link">blog</a>
             </nav>
+            {/if}
         </div>
         <div class="col col-shrink u-mb-0">
-          <button id="menu-button" class="menu-button w-nav-button">
+          <button id="menu-button" class="menu-button w-nav-button" on:click={() => isNavOpen.set(!$isNavOpen)}>
             <div class="w-icon-nav-menu"></div>
           </button>
-          <a href="#" class="btn cc-secondary cc-nav w-inline-block">
+          <!-- svelte-ignore a11y-invalid-attribute -->
+          <a href="/contact" class="btn cc-secondary cc-nav w-inline-block">
             <div>Contact</div>
           </a>
         </div>
       </div>
     </div>
 </div>
-
-<script>
-  // Get references to the button and navigation menu
-  const menuButton = document.getElementById('menu-button');
-  const navMenu : any = document.getElementById('nav-menu');
-
-  // Add a click event listener to the button
-  menuButton?.addEventListener('click', function () {
-    // Toggle the visibility of the navigation menu
-    if (navMenu?.style.display === 'flex') {
-      navMenu.style.display = 'none';
-    } else {
-      navMenu.style.display = 'flex';
-    }
-  });
-</script>
