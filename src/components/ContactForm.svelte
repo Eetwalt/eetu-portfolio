@@ -4,7 +4,7 @@
     async function submit(e: SubmitEvent) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
-    const response = await fetch("/api/contact", {
+    const response = await fetch("https://eetu-portfolio-back.eeturantanen95.workers.dev/", {
         method: "POST",
         body: formData,
     });
