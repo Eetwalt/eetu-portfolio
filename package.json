@@ -13,6 +13,7 @@
     "@astrojs/cloudflare": "^7.3.0",
     "@astrojs/svelte": "^4.0.2",
     "@astrojs/tailwind": "^5.0.0",
+    "@cloudflare/workers-types": "^4.20230922.0",
     "@getbrevo/brevo": "^1.0.1",
     "astro": "^3.1.2",
     "motion": "^10.16.4",
