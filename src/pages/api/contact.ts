@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   let defaultClient = ApiClient.instance;
   let apiKey = defaultClient.authentications["api-key"];
-  apiKey.apiKey = "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";
+  apiKey.apiKey = import.meta.env.BREVO_API_KEY;
 
   let apiInstance = new TransactionalEmailsApi();
   let sendSmtpEmail = new SendSmtpEmail();
@@ -46,15 +46,27 @@ export const POST: APIRoute = async ({ request }) => {
   </html>
   `;
   sendSmtpEmail.sender = { name: fullName, email: email };
-  sendSmtpEmail.to = [{ email: "eeturantanen.dev@gmail.com", name: "Eetu Rantanen" }];
+  sendSmtpEmail.to = [
+    { email: "eeturantanen.dev@gmail.com", name: "Eetu Rantanen" },
+  ];
   sendSmtpEmail.replyTo = { email: email, name: fullName };
-  sendSmtpEmail.headers = { "content-type": "application/json", accept: "application/json" };
-  sendSmtpEmail.params = { fullname: fullName, email: email, company: company, message: message };
+  sendSmtpEmail.headers = {
+    "content-type": "application/json",
+    accept: "application/json",
+  };
+  sendSmtpEmail.params = {
+    fullname: fullName,
+    email: email,
+    company: company,
+    message: message,
+  };
 
   try {
     // Send the email
     const response = await apiInstance.sendTransacEmail(sendSmtpEmail);
-    console.log("Email sent successfully. Response: " + JSON.stringify(response));
+    console.log(
+      "Email sent successfully. Response: " + JSON.stringify(response)
+    );
     return new Response(
       JSON.stringify({
         message: "Email sent successfully",
