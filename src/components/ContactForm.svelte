@@ -8,7 +8,8 @@
         method: "POST",
         body: formData,
     });
-    const data = await response.json();
+    const data: any = await response.json();
+    console.log(data);
     responseMessage = data.message;
     }
 </script>
