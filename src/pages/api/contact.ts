@@ -1,7 +1,10 @@
 import type { APIRoute } from "astro";
-import TransactionalEmailsApi from "@getbrevo/brevo";
-import ApiClient from "@getbrevo/brevo";
-import SendSmtpEmail from "@getbrevo/brevo";
+import Brevo from "@getbrevo/brevo";
+
+const ApiClient = Brevo.ApiClient;
+const SendSmtpEmail = Brevo.SendSmtpEmail;
+const TransactionalEmailsApi = Brevo.TransactionalEmailsApi;
+
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
