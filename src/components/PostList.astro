@@ -1,16 +1,38 @@
 ---
 import BlogPost from './BlogPost.astro';
+import { XataClient } from '../xata';
+ 
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
 
-import type { CollectionEntry } from 'astro:content';
+let posts = await xata.db.blogPosts.getAll();
+
+/*import type { CollectionEntry } from 'astro:content';
 type Props = {
     posts: CollectionEntry<'posts'>[];
 }
 
-const { posts } = Astro.props;
+const { posts } = Astro.props;*/
 ---
 
 <div class="row">
     {posts.map((post: any) => 
-        <BlogPost post={post} />
+        // <BlogPost post={post} />
+        <div class="col col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="blog-tags">
+                    </div>
+                    <h3 class="h3">{post.title}</h3>
+                    <p class="line-clamp-2 u-mb-3">
+                    {post.description}
+                    </p>
+                    <a href={'/posts/' + post.slug} class="btn cc-light w-button">read post</a>
+                    <div class="date-text">{post.publishDate.toLocaleDateString('fi-FI')}</div>
+                </div>
+            </div>
+        </div>
     )}
 </div>

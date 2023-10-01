@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Eetu-Rantanen-s-workspace-a3fodd.eu-central-1.xata.sh/db/portfolio-database",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

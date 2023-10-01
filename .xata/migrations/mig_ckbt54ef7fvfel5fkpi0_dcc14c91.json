@@ -1,0 +1,13 @@
+{
+  "id": "mig_ckbt54ef7fvfel5fkpi0",
+  "parentID": "mig_ckbstquf7fvfel5fknsg",
+  "checksum": "1:dcc14c91321301f54cf1ad966ad2959f75a1892cab2b676b959224b8fe4709af",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "blogPosts",
+        "oldName": "BlogPosts"
+      }
+    }
+  ]
+}

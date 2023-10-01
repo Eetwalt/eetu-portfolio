@@ -1,7 +1,27 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { XataClient } from '../../xata';
+ 
+export async function getStaticPaths() {
+  const xata = new XataClient({
+    apiKey: import.meta.env.XATA_API_KEY,
+    branch: import.meta.env.XATA_BRANCH
+  });
+  const posts = await xata.db.blogPosts.getAll();
+ 
+  const routes = posts.map(({ slug, title, description, content, tags, publishDate, postImage, altText }) => {
+    return {
+      params: { slug },
+      props: { title, description, content, publishDate, tags, postImage, altText },
+    };
+  });
+ 
+  return routes;
+}
+ 
+const post = Astro.props;
 
-import { getCollection } from "astro:content";
+/*import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -12,7 +32,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await post.render();*/
 ---
 
 <BaseLayout>
@@ -21,19 +41,18 @@ const { Content } = await post.render();
       <div class="row row-justify-center">
         <div class="col col-lg-8">
           <div class="date-text cc-blogpage">
-            {post.data.pubDate.toLocaleDateString("fi-FI")}
+            {post?.publishDate.toLocaleDateString("fi-FI")}
           </div>
-          <h1 transition:name={`${post.slug}-title`} class="blog-heading">
-            {post.data.title}
+          <h1 class="blog-heading">
+            {post?.title}
           </h1>
           <div
-            transition:name={`${post.slug}-wrapper`}
             class="blog-content-wrapper"
           >
             <div class="blog-header">
-              <div transition:name={`${post.slug}-tags`} class="blog-tags">
+              <div class="blog-tags">
                 {
-                  post.data.tags.map((tag: any) => (
+                  post?.tags.map((tag: any) => (
                     <a href="#" class="tag-link">
                       #{tag}
                     </a>
@@ -44,8 +63,11 @@ const { Content } = await post.render();
                 >Share on twitter</a
               >
             </div>
+            <div class="image-wrapper cc-story">
+              <img style="max-height: 20rem;" src={post.postImage.url} loading="lazy" alt={post.altText} class="full-image" />
+            </div>
             <div class="blog-richtext w-richtext">
-              <Content />
+              <p>{post?.content}</p>
             </div>
             <a href="#" class="btn cc-light cc-smaller w-button"
               >Leave a comment</a

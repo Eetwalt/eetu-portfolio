@@ -1,0 +1,17 @@
+{
+  "id": "mig_ckbtf9uf7fvfel5fksc0",
+  "parentID": "mig_ckbt54ef7fvfel5fkpi0",
+  "checksum": "1:971a07160bcc6a71fffd07d7561c5d6eb8cb668207f523716c61740f467e5a5e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "slug",
+          "type": "string",
+          "unique": true
+        },
+        "table": "blogPosts"
+      }
+    }
+  ]
+}

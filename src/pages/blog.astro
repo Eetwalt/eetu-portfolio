@@ -3,9 +3,17 @@ import { fade } from "astro:transitions";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaSection from "../components/CtaSection.astro";
 import PostList from "../components/PostList.astro";
-import { getCollection } from "astro:content";
+// import { getCollection } from "astro:content";
+import { XataClient } from '../xata';
+ 
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
+ 
+let posts = await xata.db.blogPosts.getAll();
 
-const posts = await getCollection("posts");
+// const posts = await getCollection("posts");
 
 const pageTitle = "Web Dev Micro Blog | Web Developer from Tampere";
 ---

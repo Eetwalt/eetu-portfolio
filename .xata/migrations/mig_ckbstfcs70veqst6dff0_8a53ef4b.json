@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckbstfcs70veqst6dff0",
+  "parentID": "mig_ckbstcks70veqst6dfe0",
+  "checksum": "1:8a53ef4be2f0bf89f8f5fb6ffb854071ecd6de491b4e922b54a11fdd50af60da",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "altText",
+          "type": "string"
+        },
+        "table": "BlogPosts"
+      }
+    }
+  ]
+}

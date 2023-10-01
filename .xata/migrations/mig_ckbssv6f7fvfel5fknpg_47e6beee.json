@@ -1,0 +1,17 @@
+{
+  "id": "mig_ckbssv6f7fvfel5fknpg",
+  "parentID": "mig_ckbssq6f7fvfel5fknog",
+  "checksum": "1:47e6beee4b9cd8e694e1561adae8684a657ae09027e598b3f925cfc369fe27ff",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "publishDate",
+          "type": "datetime",
+          "defaultValue": "now"
+        },
+        "table": "BlogPosts"
+      }
+    }
+  ]
+}

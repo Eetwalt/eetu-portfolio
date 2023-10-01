@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.0.0",
     "@cloudflare/workers-types": "^4.20230922.0",
     "@getbrevo/brevo": "^1.0.1",
+    "@xata.io/client": "^0.26.6",
     "astro": "^3.1.2",
     "motion": "^10.16.4",
     "nanostores": "^0.9.3",

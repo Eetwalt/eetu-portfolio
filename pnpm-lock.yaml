@@ -20,6 +20,9 @@ dependencies:
   '@getbrevo/brevo':
     specifier: ^1.0.1
     version: 1.0.1
+  '@xata.io/client':
+    specifier: ^0.26.6
+    version: 0.26.6(typescript@5.2.2)
   astro:
     specifier: ^3.1.2
     version: 3.1.2
@@ -1120,6 +1123,14 @@ packages:
 
   /@types/unist@3.0.0:
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
+    dev: false
+
+  /@xata.io/client@0.26.6(typescript@5.2.2):
+    resolution: {integrity: sha512-6YMAOSTGGO4Mwh/J8357l0jSssp3SXwyEPJu1gMr051GB/oV/l2/RAwLNwKyIhHivfvCfAmvUWXNt2j1PthglA==}
+    peerDependencies:
+      typescript: '>=4.5'
+    dependencies:
+      typescript: 5.2.2
     dev: false
 
   /acorn@8.10.0:
