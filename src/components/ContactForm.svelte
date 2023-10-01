@@ -4,7 +4,7 @@
     async function submit(e: SubmitEvent) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
-    const response = await fetch("https://eetu-portfolio-back.eeturantanen95.workers.dev/", {
+    const response = await fetch("https://www.eeturantanen.dev/api/send/sendMail", {
         method: "POST",
         body: formData,
     });
