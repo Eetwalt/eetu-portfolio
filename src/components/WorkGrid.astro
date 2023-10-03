@@ -9,15 +9,7 @@ const xata = new XataClient({
 
 let works = await xata.db.works.getAll();
 
-const { work, gridClass } = Astro.props;
-
-/*import type { CollectionEntry } from 'astro:content';
-type Props = {
-    works: CollectionEntry<'works'>[];
-    gridClass: string;
-}
-
-const { works, gridClass } = Astro.props;*/
+const { gridClass } = Astro.props;
 ---
 
 <div class={`${gridClass}`}>
