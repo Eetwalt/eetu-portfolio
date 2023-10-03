@@ -7,4 +7,4 @@
 - Vercel
 - Postmark
 
-Happy browsing
+Happy browsing!
