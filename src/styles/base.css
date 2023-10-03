@@ -1811,6 +1811,17 @@ figure {
   max-height: 80vh;
 }
 
+.blog-content-wrapper.cc-blogpage {
+  border: 1px solid #333;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: -4px 4px #333;
+  background-color: #f6f1ee;
+  background-image: url('../images/noisy-texture-200x200-o6-d10-c-F6F1EE-t1.png');
+  overflow: auto;
+  max-height: none;
+}
+
 .blog-header {
   justify-content: space-between;
   align-items: flex-start;
