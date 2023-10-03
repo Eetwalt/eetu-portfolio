@@ -662,6 +662,7 @@ figure {
   font-family: 'Neutralface';
   font-weight: 800;
   white-space: nowrap;
+  margin-bottom: 0em;
 }
 
 .text-link:hover {
