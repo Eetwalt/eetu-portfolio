@@ -1,114 +1,227 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { XataClient } from "../xata";
 import CodeText from "../components/CodeText.svelte";
+import HomeWorkSlider from "../components/HomeWorkSlider.svelte";
+import NumberCounter from "../components/NumberCounter.svelte";
 import CtaSection from "../components/CtaSection.astro";
-import WorkGrid from "../components/WorkGrid.astro";
-
-import { getCollection } from 'astro:content';
-
-const works = await getCollection('works');
-
-import { fade } from "astro:transitions";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH,
+});
+
+let works = await xata.db.works.getAll();
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <section class="section cc-home-header">
-    <div class="custom-container" transition:name="hero" transition:animate={fade({ duration: "0.4s" })}>
+    <div class="custom-container">
       <div class="row row-no-gutters row-justify-between">
-        <div class="col col-no-gutters col-shrink col-md-12">
+        <div
+          class="col col-no-gutters col-shrink col-md-12 card"
+          style="overflow: visible;"
+        >
           <div class="home_header_box">
-            <div class="bracket-image-wrapper"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" class="image-overlay" /></div>
-            <div class="h1">Eetu<br />Rantanen</div>
+            <div class="bracket-image-wrapper" transition:name="bracket">
+              <img
+                src="images/bracket--code-angle-programming-file-bracket.svg"
+                loading="lazy"
+                alt=""
+                class="image-overlay"
+              />
+            </div>
+            <div class="h1" transition:name="hero-subtitle">
+              Eetu<br />Rantanen
+            </div>
           </div>
           <div class="home_header_box is-below">
-            <div transition:name="hero-title" class="h1 u-text-bold">Web<br />Developer</div>
+            <div transition:name="hero-title" class="h1 u-text-bold">
+              Web<br />Developer
+            </div>
             <div class="description-box">
-              <h1 transition:name="hero-desc" class="paragraph">Moro! I’m Eetu, A web developer based in Tampere, Finland.</h1>
+              <h1 transition:name="hero-desc" class="paragraph">
+                Moro! I’m Eetu, A web developer based in Tampere, Finland.
+              </h1>
             </div>
           </div>
           <div class="home_header_box is-tools">
             <div class="tool-box is-first">
               <div class="logos_wrapper">
-                <img src="images/html5.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/css3.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/js.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/ts.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/svelte.svg" loading="lazy" alt="" class="logo-image" />
+                <img
+                  src="images/html5.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/css3.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/js.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/ts.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/svelte.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
               </div>
               <div class="toolbox-text">languages</div>
             </div>
             <div class="tool-box">
               <div class="logos_wrapper">
-                <img src="images/webflow.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/svelte-kit.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/astro.svg" loading="lazy" alt="" class="logo-image" />
-                <img src="images/cfw.svg" loading="lazy" alt="" class="logo-image" />
+                <img
+                  src="images/webflow.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/svelte-kit.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/astro.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/Vercel-logo.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                />
+                <img
+                  src="images/CloudFlare-logo.svg"
+                  loading="lazy"
+                  alt=""
+                  class="logo-image"
+                  style="height: 25px;"
+                />
               </div>
               <div class="toolbox-text">tools</div>
             </div>
           </div>
         </div>
-        <div class="col col-no-gutters col-shrink col-md-12">
-          <CodeText client:load/>
-        </div>
       </div>
     </div>
   </section>
-  <section id="work" class="section cc-projects">
-    <div class="marquee">
-      <div class="marquee-content scroll">
-        <div>
-          <h2 class="h2 u-mb-0">projects</h2>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">web dev</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">projects</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">web dev</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
+  <div class="marquee">
+    <div class="marquee-content scroll">
+      <div>
+        <h2 class="h2 u-mb-0">projects</h2>
       </div>
-      <div class="marquee-content scroll">
-        <div>
-          <div class="h2 u-mb-0">projects</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">web dev</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">projects</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
-        <div>
-          <div class="h2 u-mb-0">web dev</div>
-        </div>
-        <div class="bracket-image-wrapper cc-marquee"><img src="images/bracket--code-angle-programming-file-bracket.svg" loading="lazy" alt="" /></div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
       </div>
-    </div>
-    <WorkGrid works={works} gridClass="home-work-grid"/>
-    <div class="row row-no-gutters cc-border-bottom">
-      <div class="col u-mb-0 col-no-gutters col-lg-4">
-        <div class="border-box"></div>
+      <div>
+        <div class="h2 u-mb-0">web dev</div>
       </div>
-      <div class="col u-mb-0 col-no-gutters col-lg-3"></div>
-      <div class="col u-mb-0 col-no-gutters col-lg-5">
-        <div class="works-link-wrapper">
-          <a href="/work">see all works</a>
-        </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="h2 u-mb-0">projects</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="h2 u-mb-0">web dev</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
       </div>
     </div>
-  </section>
+    <div class="marquee-content scroll">
+      <div>
+        <div class="h2 u-mb-0">projects</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="h2 u-mb-0">web dev</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="h2 u-mb-0">projects</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+      <div>
+        <div class="h2 u-mb-0">web dev</div>
+      </div>
+      <div class="bracket-image-wrapper cc-marquee">
+        <img
+          src="images/bracket--code-angle-programming-file-bracket.svg"
+          loading="lazy"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  <HomeWorkSlider client:load works={works} transition:name="works" />
+  <div class="row row-no-gutters cc-border-bottom">
+    <div class="col u-mb-0 col-no-gutters col-lg-4 col-md-1">
+      <div class="border-box"></div>
+    </div>
+    <div class="col u-mb-0 col-no-gutters col-lg-3 col-md-3"></div>
+    <div class="col u-mb-0 col-no-gutters col-lg-5 col-md-8">
+      <div class="works-link-wrapper">
+        <a href="/work" class="text-link">see all works</a>
+      </div>
+    </div>
+  </div>
   <section id="about" class="section cc-about">
     <div class="row row-no-gutters">
       <div class="col u-mb-0 col-no-gutters col-lg-4 col-md-12">
@@ -118,7 +231,15 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
       </div>
       <div class="col u-mb-0 col-no-gutters col-lg-3 col-md-12">
         <div class="image-wrapper cc-about-home">
-          <img transition:name="aboutImage" src="images/eetu.rantanen.jpg" loading="lazy" sizes="(max-width: 767px) 13vw, (max-width: 991px) 20vw, 25vw" srcset="images/eetu.rantanen-p-500.jpg 500w, images/eetu.rantanen-p-800.jpg 800w, images/eetu.rantanen.jpg 1000w" alt="" class="full-image cc-portrait" />
+          <img
+            transition:name="aboutImage"
+            src="images/eetu.rantanen.jpg"
+            loading="lazy"
+            sizes="(max-width: 767px) 13vw, (max-width: 991px) 20vw, 25vw"
+            srcset="images/eetu.rantanen-p-500.jpg 500w, images/eetu.rantanen-p-800.jpg 800w, images/eetu.rantanen.jpg 1000w"
+            alt=""
+            class="full-image cc-portrait"
+          />
           <div class="image-overlay cc-about"></div>
         </div>
       </div>
@@ -126,12 +247,22 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
         <div class="home-about-content-wrapper">
           <div class="work-content-wrapper">
             <h2 class="h3 u-mb-1">About me</h2>
-            <p transition:name="about-desc" class="u-text-justify u-mb-3">Hey! I’m Eetu. self taught web developer living his best life in Tampere, finland. Husband, dad of a human and a dog. Ex semi-professional volleyball player. JEdi. What else?</p>
+            <p transition:name="about-desc" class="u-text-justify u-mb-3">
+              Hey! I’m Eetu. self taught web developer living his best life in
+              Tampere, finland. Husband of a lovely wife, dad of a human baby
+              boy and a wonderfully lunatic dog. Ex semi-professional volleyball
+              player. What else?
+            </p>
             <a href="/about" class="btn cc-light w-button">read my story</a>
           </div>
         </div>
       </div>
     </div>
+    <NumberCounter
+      client:load
+      wrapperClasses="col-lg-3 col-md-6 col-xs-12"
+      statboxClass=""
+    />
   </section>
   <CtaSection ctaClass="cc-home" />
 </BaseLayout>
@@ -148,5 +279,11 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
   .scroll {
     animation: scroll 30s linear infinite;
   }
-</style>
 
+  .splide__arrow {
+    height: 3em;
+    width: 3em;
+    border: 1px solid #333;
+    border-radius: 0px;
+  }
+</style>

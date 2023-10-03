@@ -20,6 +20,21 @@ const tables = [
       { name: "slug", type: "string", unique: true },
     ],
   },
+  {
+    name: "works",
+    columns: [
+      { name: "name", type: "string" },
+      { name: "sizeclass", type: "string" },
+      { name: "type", type: "string" },
+      { name: "image", type: "file" },
+      { name: "altText", type: "string" },
+      { name: "tags", type: "multiple" },
+      { name: "order", type: "int" },
+      { name: "content", type: "text" },
+      { name: "siteLink", type: "string" },
+      { name: "slug", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -28,8 +43,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type BlogPosts = InferredTypes["blogPosts"];
 export type BlogPostsRecord = BlogPosts & XataRecord;
 
+export type Works = InferredTypes["works"];
+export type WorksRecord = Works & XataRecord;
+
 export type DatabaseSchema = {
   blogPosts: BlogPostsRecord;
+  works: WorksRecord;
 };
 
 const DatabaseClient = buildClient();

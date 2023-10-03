@@ -1,29 +1,30 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import "../styles/webflow.css";
 import "../styles/normalize.css";
+import "../styles/webflow.css";
 import "../styles/base.css";
 import Navigation from "../components/Navigation.svelte";
 import Footer from "../components/Footer.astro";
+import "../styles/splide-default.min.css"
 
 const { pageTitle } = Astro.props;
 ---
 
-  <html lang="en">
-    <head>
-      <meta charset="utf-8" />
-      <title>{pageTitle}</title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="generator" content={Astro.generator} />
-      <link href="images/black-icon-ICO.png" rel="shortcut icon" type="image/x-icon" />
-      <link href="images/webclip-er.png" rel="apple-touch-icon" />
-      <ViewTransitions />
-    </head>
-    <body>
-      <Navigation client:only />
-      <div class="page-wrapper cc-light" style="min-height: 77vh;">
-        <slot />
-      </div>
-      <Footer />
-    </body>
-  </html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{pageTitle}</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="generator" content={Astro.generator} />
+    <link href="images/black-icon-ICO.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/webclip-er.png" rel="apple-touch-icon" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <Navigation client:only />
+    <div class="page-wrapper cc-light" style="min-height: 77vh;">
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>

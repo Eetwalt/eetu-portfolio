@@ -1,17 +1,46 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CtaSection from '../components/CtaSection.astro';
-import WorkGrid from '../components/WorkGrid.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaSection from "../components/CtaSection.astro";
+import WorkGrid from "../components/WorkGrid.astro";
+// import { getCollection } from 'astro:content';
 
-const works = await getCollection("works");
+// const works = await getCollection("works");
+
+import { XataClient } from "../xata";
+
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH,
+});
+
+let works = await xata.db.works.getAll();
 
 const pageTitle = "Web Development Projects | Web Developer from Tampere";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	  <section id="work" class="section cc-projects">
-		<WorkGrid works={works} gridClass='workpage-work-grid'/>
-	  </section>
-	<CtaSection ctaClass="cc-home" />
+  <div class="section cc-home-header" style="padding-bottom: 4rem;">
+    <div class="custom-container">
+      <div class="row row-justify-center">
+        <div class="col col-lg-6 col-md-12">
+          <div class="u-text-center">
+            <h1 class="h2" transition:name="hero-title">past projects</h1>
+            <p transition:name="hero-desc">
+              Here's some of my past work in the web development field. Feel
+              free to ask for more details or my experiences with spesific types
+              of projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="work" class="section cc-projects">
+    <WorkGrid
+      works={works}
+      gridClass="home-work-grid"
+      transition:name="works"
+    />
+  </section>
+  <CtaSection ctaClass="cc-home" />
 </BaseLayout>

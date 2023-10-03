@@ -1,5 +1,4 @@
 ---
-import BlogPost from './BlogPost.astro';
 import { XataClient } from '../xata';
  
 const xata = new XataClient({
@@ -8,13 +7,6 @@ const xata = new XataClient({
 });
 
 let posts = await xata.db.blogPosts.getAll();
-
-/*import type { CollectionEntry } from 'astro:content';
-type Props = {
-    posts: CollectionEntry<'posts'>[];
-}
-
-const { posts } = Astro.props;*/
 ---
 
 <div class="row">
@@ -22,10 +14,10 @@ const { posts } = Astro.props;*/
         // <BlogPost post={post} />
         <div class="col col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" transition:name={`${post.slug}-card`}>
                     <div class="blog-tags">
                     </div>
-                    <h3 class="h3">{post.title}</h3>
+                    <h3 class="h3" transition:name={`${post.slug}-title`}>{post.title}</h3>
                     <p class="line-clamp-2 u-mb-3">
                     {post.description}
                     </p>

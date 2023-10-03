@@ -1,17 +1,55 @@
 <script lang="ts">
-    let responseMessage: string;
+    interface FormData {
+        first_name: string;
+        last_name: string;
+        email: string;
+        phone: string;
+        company: string;
+        message: string;
+    }
+
+    let errorMessage = "";
 
     async function submit(e: SubmitEvent) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget as HTMLFormElement);
-    const response = await fetch("https://www.eeturantanen.dev/api/send/sendMail", {
-        method: "POST",
-        body: formData,
-    });
-    const data: any = await response.json();
-    console.log(data);
-    responseMessage = data.message;
+        e.preventDefault();
+        const form = e.currentTarget as HTMLFormElement | null;
+        if (!form) {
+            console.error("Form element not found");
+            return;
+        }
+
+        // Extract form data
+        const formData: FormData = {
+            first_name: form.first_name.value,
+            last_name: form.last_name.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            company: form.company.value,
+            message: form.message.value,
+        };
+        try {
+            const response = await fetch("../../api/sendMail", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                errorMessage = "";
+                window.location.href = "/thank-you";
+            } else {
+                const data: any = await response.json();
+                errorMessage = data.message || "Error sending the email";
+                console.error("Error sending the email");
+            }
+        } catch (error) {
+            errorMessage = "Network error occurred. Please try again.";
+            console.error("Error sending the email:", error);
+        }
     }
+
 </script>
 
 <form on:submit={submit}>
@@ -54,7 +92,7 @@
         </div>
     </div>
     <button type="submit" class="btn cc-light w-button w-full">Submit form</button>
-    {#if responseMessage}
-        <p>{responseMessage}</p>
+    {#if errorMessage}
+        <p>{errorMessage}</p>
     {/if}
 </form>

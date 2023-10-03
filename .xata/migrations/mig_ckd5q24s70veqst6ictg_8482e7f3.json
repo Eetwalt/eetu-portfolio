@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckd5q24s70veqst6ictg",
+  "parentID": "mig_ckd5pjks70veqst6icsg",
+  "checksum": "1:8482e7f374c5090c2196c4e5bece55c5a90987965f4b68ea4b690513c71538bf",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "type",
+          "type": "string"
+        },
+        "table": "works"
+      }
+    }
+  ]
+}

@@ -1,38 +1,44 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { XataClient } from '../../xata';
- 
+import { XataClient } from "../../xata";
+
 export async function getStaticPaths() {
   const xata = new XataClient({
     apiKey: import.meta.env.XATA_API_KEY,
-    branch: import.meta.env.XATA_BRANCH
+    branch: import.meta.env.XATA_BRANCH,
   });
   const posts = await xata.db.blogPosts.getAll();
- 
-  const routes = posts.map(({ slug, title, description, content, tags, publishDate, postImage, altText }) => {
-    return {
-      params: { slug },
-      props: { title, description, content, publishDate, tags, postImage, altText },
-    };
-  });
- 
+
+  const routes = posts.map(
+    ({
+      slug,
+      title,
+      description,
+      content,
+      tags,
+      publishDate,
+      postImage,
+      altText,
+    }) => {
+      return {
+        params: { slug },
+        props: {
+          title,
+          description,
+          content,
+          publishDate,
+          tags,
+          postImage,
+          altText,
+        },
+      };
+    }
+  );
+
   return routes;
 }
- 
+
 const post = Astro.props;
-
-/*import { getCollection } from "astro:content";
-
-export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
-}
-
-const { post } = Astro.props;
-const { Content } = await post.render();*/
 ---
 
 <BaseLayout>
@@ -43,11 +49,12 @@ const { Content } = await post.render();*/
           <div class="date-text cc-blogpage">
             {post?.publishDate.toLocaleDateString("fi-FI")}
           </div>
-          <h1 class="blog-heading">
+          <h1 class="blog-heading" transition:name={`${post.slug}-title`}>
             {post?.title}
           </h1>
           <div
             class="blog-content-wrapper"
+            transition:name={`${post.slug}-card`}
           >
             <div class="blog-header">
               <div class="blog-tags">
@@ -64,7 +71,13 @@ const { Content } = await post.render();*/
               >
             </div>
             <div class="image-wrapper cc-story">
-              <img style="max-height: 20rem;" src={post.postImage.url} loading="lazy" alt={post.altText} class="full-image" />
+              <img
+                style="max-height: 20rem;"
+                src={post.postImage.url}
+                loading="eager"
+                alt={post.altText}
+                class="full-image"
+              />
             </div>
             <div class="blog-richtext w-richtext">
               <p>{post?.content}</p>

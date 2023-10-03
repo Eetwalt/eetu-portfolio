@@ -1475,7 +1475,7 @@
   }
   .w-richtext ol,
   .w-richtext ul {
-    overflow: hidden;
+    overflow: visible;
   }
   .w-richtext .w-richtext-figure-selected.w-richtext-figure-type-video div:after,
   .w-richtext .w-richtext-figure-selected[data-rt-type="video"] div:after {

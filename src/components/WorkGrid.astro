@@ -1,17 +1,27 @@
 ---
 import ProjectGridCard from "./ProjectGridCard.astro";
+import { XataClient } from '../xata';
 
-import type { CollectionEntry } from 'astro:content';
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
+
+let works = await xata.db.works.getAll();
+
+const { work, gridClass } = Astro.props;
+
+/*import type { CollectionEntry } from 'astro:content';
 type Props = {
     works: CollectionEntry<'works'>[];
     gridClass: string;
 }
 
-const { works, gridClass } = Astro.props;
+const { works, gridClass } = Astro.props;*/
 ---
 
 <div class={`${gridClass}`}>
     {works.map((work: any) => 
-        <ProjectGridCard work={work} transition:name="slide"/>
+        <ProjectGridCard work={work}/>
     )}
 </div>

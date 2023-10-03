@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaSection from "../../components/CtaSection.astro";
+import WorkGrid from "../../components/WorkGrid.astro"
+import { XataClient } from '../../xata';
+import { marked } from 'marked';
+
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
+ 
+export async function getStaticPaths() {
+  const xata = new XataClient({
+    apiKey: import.meta.env.XATA_API_KEY,
+    branch: import.meta.env.XATA_BRANCH
+  });
+  const works = await xata.db.works.getAll();
+ 
+  const routes = works.map(({ slug, name, content, tags, image, type, altText, siteLink }) => {
+    return {
+      params: { slug },
+      props: { name,  content, type, tags, image, altText, siteLink },
+    };
+  });
+ 
+  return routes;
+}
+ 
+const work = Astro.props;
+
+const markdown = marked.parse(work.content);
+
+let works = await xata.db.works.getAll();
+
+const pageTitle = work.name + " - Web Development Project";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <section id="work" class="section cc-projects">
+      <WorkGrid works={works} gridClass='workpage-work-grid'/>
+      <CtaSection ctaClass="cc-home" />
+      <div class="fixed h-full w-full bg-zinc-700/50 top-0 bottom-0 z-10 flex justify-center pt-28 sm:pt-40">
+        <div class="custom-container">
+          <div class="row row-justify-center">
+            <div class="col col-lg-9 col-md-12">
+              <div class="blog-content-wrapper" transition:name={`${work.slug}-card`}>
+                <div class="blog-header">
+                  <a href="/work" class="btn cc-light cc-smaller w-button" style="margin-left: auto;">Close</a>
+                </div>
+                <a href="https://www.kuasi.fi/" target="_blank" id="typeTag" class="tag cc-project-type-onpage">{work.type}</a>
+                <h1 class="blog-heading cc-work">{work.name}</h1>
+                <a href={`${work.siteLink}`} target="_blank" class="btn cc-light cc-smaller w-button u-mb-2 u-ml-auto">Visit live site</a>
+                <div class="image-wrapper cc-border u-mb-2">
+                  <img transition:name={`${work.slug}-image`} style="max-height: 30rem;" src={`${work.image.url}`} loading="lazy" srcset={`${work.image.url} 500w, ${work.image.url} 800w, ${work.image.url} 1080w, ${work.image.url} 1600w, ${work.image.url} 1920w`} alt={work.altText} class="full-image" />
+                </div>
+                <div class="blog-richtext w-richtext">
+                  <article set:html={markdown} class="max-w-none prose prose-li:text-gray-800 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"/>
+                </div>
+                <a href="#" class="btn cc-light cc-smaller w-button">Share on twitter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

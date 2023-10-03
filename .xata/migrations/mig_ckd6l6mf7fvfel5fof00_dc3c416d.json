@@ -1,0 +1,16 @@
+{
+  "id": "mig_ckd6l6mf7fvfel5fof00",
+  "parentID": "mig_ckd5qrcs70veqst6idig",
+  "checksum": "1:dc3c416dff269b173906af94f9b990d522287379d0aaa8a4d2c6a96885dca0c7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "siteLink",
+          "type": "string"
+        },
+        "table": "works"
+      }
+    }
+  ]
+}

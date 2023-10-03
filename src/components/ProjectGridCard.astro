@@ -1,25 +1,21 @@
 ---
-import { type CollectionEntry } from 'astro:content';
 import WorkTags from './WorksTags.svelte';
-
-type Props = {
-  work: CollectionEntry<'works'>;
-};
 
 const { work } = Astro.props;
 ---
-  <a  
-    id="project-wrapper" href={'/works/' + work.slug} 
-    class={`image-wrapper cc-projects ${work.data.sizeclass}`}
-  >
-      <img 
-          transition:name={`${work.slug}-image`} 
-          src={work.data.img} loading="lazy" 
-          srcset={`images/${work.data.img} 500w, images/${work.data.img} 800w, images/${work.data.img} 1080w, images/${work.data.img} 1600w, images/${work.data.img} 1920w`} 
-          alt={work.data.alt} 
-          class="full-image cc-project" 
-      />
-      <div id="tagsWrapper" class="tags-wrapper">
-        <WorkTags client:load name={work.data.name} type={work.data.type}></WorkTag>
-      </div>
-  </a>
+
+<a  
+  transition:name={`${work.slug}-card`} id="project-wrapper" href={'/works/' + work.slug} 
+  class={`image-wrapper cc-projects ${work.sizeclass}`}
+>
+    <img 
+        transition:name={`${work.slug}-image`} 
+        src={work.image.url} loading="lazy" 
+        srcset={`${work.image.url} 500w, ${work.image.url} 800w, ${work.image.url} 1080w, ${work.image.url} 1600w, ${work.image.url} 1920w`} 
+        alt={work.altText} 
+        class="full-image cc-project" 
+    />
+    <div id="tagsWrapper" class="tags-wrapper">
+      <WorkTags client:load name={work.name} type={work.type} isActive={false}></WorkTag>
+    </div>
+</a>

@@ -23,7 +23,8 @@
   });
 
   export let name:string, type:string;
+  export let isActive: boolean;
 </script>
 
-<div id="typeTag" class="tag cc-project-type">{type}</div>
-<div id="nameTag" class="tag cc-project-name">{name}</div>
+<div id="typeTag" class="tag cc-project-type {isActive ? "visible" : ""}">{type}</div>
+<div id="nameTag" class="tag cc-project-name {isActive ? "visible" : ""}">{name}</div>

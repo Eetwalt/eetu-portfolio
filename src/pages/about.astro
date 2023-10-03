@@ -1,19 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaSection from "../components/CtaSection.astro";
+import NumberCounter from "../components/NumberCounter.svelte";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <section id="about" class="section cc-about">
-    <div class="row row-no-gutters">
+    <div class="row row-no-gutters row-justify-center">
       <div class="col u-mb-0 col-no-gutters col-lg-5 col-sm-12">
         <div class="about-content-wrapper is-left">
-          <h2 transition:name="hero-title" class="h2 u-mb-0">
+          <h2 transition:name="hero-title" class="h2 u-mb-0 u-text-center">
             worklife timeline
           </h2>
-          <div class="bracket-image-wrapper cc-about">
+          <div class="bracket-image-wrapper cc-about" transition:name="bracket">
             <img
               src="images/bracket--code-angle-programming-file-bracket.svg"
               loading="lazy"
@@ -21,7 +22,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               class="image-overlay"
             />
           </div>
-          <div transition:name="aboutImage" class="image-wrapper cc-about">
+          <!-- div transition:name="aboutImage" class="image-wrapper cc-about">
             <img
               src="images/eetu.rantanen.jpg"
               loading="lazy"
@@ -31,16 +32,17 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               class="full-image cc-portrait"
             />
             <div class="image-overlay cc-about"></div>
-          </div>
+          </div -->
+          <NumberCounter client:load wrapperClasses="col-lg-12" statboxClass="cc-about"/>
         </div>
       </div>
       <div class="col u-mb-0 col-no-gutters col-lg-7 col-sm-12">
         <div class="about-content-wrapper">
           <div class="story-section">
-            <h3 class="h3 u-mb-1">
+            <h3 class="h3 u-mb-1" transition:name="hero-subtitle">
               teens <span class="eyebrow">2010-2015</span>
             </h3>
-            <p story-paragraph class="u-text-justify u-mb-3">
+            <p transition:name="hero-desc" class="u-text-justify u-mb-3">
               Born and raised in a small town called Kangasala, <b
                 >Eetu had his sights set on becoming a volleyball sensation from
                 a young age.</b
@@ -55,16 +57,15 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               Who needs good grades when you're planning to play volleyball
               until eternity, right?
             </p>
-            <p story-paragraph class="u-text-justify u-mb-2">
+            <p class="u-text-justify u-mb-2">
               As a talented and motivated athlete, eetu entered the Finnish
               league at the early age of 16. Living the life of a
               semi-professional athlete, juggling various side gigs on the side.
 
-
               <b>Adulthood and a regular job seemed like a distant future</b>;
               the athlete's career still had a glimmer of hope.
             </p>
-            <div transition:name="aboutImage" class="image-wrapper cc-story">
+            <div class="image-wrapper cc-story">
               <img
                 src="images/er-spiker.jpg"
                 loading="lazy"
@@ -80,7 +81,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
             <h3 class="h3 u-mb-1">
               young adult <span class="eyebrow">2015-2020</span>
             </h3>
-            <p story-paragraph class="u-text-justify u-mb-3">
+            <p class="u-text-justify u-mb-3">
               The seasons rolled on, and after a few heartbreakingly
               disappointing ones, <b
                 >eetu was hit with a harsh reality check — he wasn't going to
@@ -88,7 +89,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               > This bitter pill to swallow left him with no Plan B, but
               fortunately, life had other plans in store for him.
             </p>
-            <p story-paragraph class="u-text-justify u-mb-5">
+            <p class="u-text-justify u-mb-3">
               Eetu decided to embark on a journey that took him from the courts
               to the classroom. <b
                 >Enrolling in a college in Pietarsaari, he started his studies
@@ -100,7 +101,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
                 >Eetu made a bold decision and dropped out after just one year.</b
               >
             </p>
-            <p story-paragraph class="u-text-justify u-mb-3">
+            <p class="u-text-justify u-mb-3">
               One of Eetu's <b
                 >side gigs during his volleyball days was accounting, where his
                 knack for organization and problem-solving shone.</b
@@ -111,7 +112,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               skills honed during his side gigs, he swiftly earned his degree
               within a year and started working as a bookkeeper.
             </p>
-            <p story-paragraph class="u-text-justify u-mb-2">
+            <p class="u-text-justify u-mb-2">
               <b
                 >While attending school, Eetu continued to nurture his creative
                 side.</b
@@ -129,7 +130,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               > and he dove headfirst into learning it, paving the way for a
               freelance career in web development.
             </p>
-            <div transition:name="aboutImage" class="image-wrapper cc-story">
+            <div class="image-wrapper cc-story">
               <img
                 src="images/eetu-iso.webp"
                 loading="lazy"
@@ -184,7 +185,7 @@ const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
               applications using low-code tools and enhanced their functionality
               with custom-written JavaScript.
             </p>
-            <p story-paragraph class="u-text-justify u-mb-3">
+            <p story-paragraph class="u-text-justify u-mb-1">
               <strong class="highlight"
                 >Eetu's hunger for knowledge is insatiable, and he constantly
                 strives to become an even better web developer. If you have a
