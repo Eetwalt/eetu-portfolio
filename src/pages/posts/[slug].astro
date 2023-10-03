@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { XataClient } from "../../xata";
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const xata = new XataClient({
@@ -39,6 +40,8 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
+
+const markdown = marked.parse(post.content);
 ---
 
 <BaseLayout>
@@ -49,12 +52,12 @@ const post = Astro.props;
           <div class="date-text cc-blogpage">
             {post?.publishDate.toLocaleDateString("fi-FI")}
           </div>
-          <h1 class="blog-heading" transition:name={`${post.slug}-title`}>
+          <h1 class="blog-heading" transition:name={`${post?.slug}-title`}>
             {post?.title}
           </h1>
           <div
-            class="blog-content-wrapper"
-            transition:name={`${post.slug}-card`}
+            class="blog-content-wrapper cc-blogpage"
+            transition:name={`${post?.slug}-card`}
           >
             <div class="blog-header">
               <div class="blog-tags">
@@ -70,17 +73,22 @@ const post = Astro.props;
                 >Share on twitter</a
               >
             </div>
-            <div class="image-wrapper cc-story">
-              <img
-                style="max-height: 20rem;"
-                src={post.postImage.url}
-                loading="eager"
-                alt={post.altText}
-                class="full-image"
-              />
-            </div>
-            <div class="blog-richtext w-richtext">
-              <p>{post?.content}</p>
+            {
+              post.postImage && (
+                <div class="image-wrapper cc-story">
+                  <img
+                    style="max-height: 20rem;"
+                    src={post?.postImage?.url}
+                    loading="eager"
+                    alt={post?.altText}
+                    class="full-image"
+                  />
+                </div>
+              )
+            }
+
+            <div class="blog-richtext">
+              <article set:html={markdown} class="max-w-none prose prose-li:text-gray-800 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"/>
             </div>
             <a href="#" class="btn cc-light cc-smaller w-button"
               >Leave a comment</a
