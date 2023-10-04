@@ -9,7 +9,6 @@ const { work } = Astro.props;
   class={`image-wrapper cc-projects ${work.sizeclass}`}
 >
     <img 
-        transition:name={`${work.slug}-image`} 
         src={work.image.url} loading="lazy" 
         srcset={`${work.image.url} 500w, ${work.image.url} 800w, ${work.image.url} 1080w, ${work.image.url} 1600w, ${work.image.url} 1920w`} 
         alt={work.altText} 

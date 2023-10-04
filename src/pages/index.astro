@@ -7,6 +7,7 @@ import CtaSection from "../components/CtaSection.astro";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
+
 const xata = new XataClient({
   apiKey: import.meta.env.XATA_API_KEY,
   branch: import.meta.env.XATA_BRANCH,
@@ -20,8 +21,8 @@ let works = await xata.db.works.getAll();
     <div class="custom-container">
       <div class="row row-no-gutters row-justify-between">
         <div
-          class="col col-no-gutters col-shrink col-md-12 card"
-          style="overflow: visible;"
+          class="col col-no-gutters col-shrink col-md-12 card overflow-visible"
+          transition:name="main"
         >
           <div class="home_header_box">
             <div class="bracket-image-wrapper" transition:name="bracket">
@@ -47,7 +48,7 @@ let works = await xata.db.works.getAll();
             </div>
           </div>
           <div class="home_header_box is-tools">
-            <div class="tool-box is-first">
+            <div class="tool-box is-first" transition:name="box1">
               <div class="logos_wrapper">
                 <img
                   src="images/html5.svg"
@@ -82,7 +83,7 @@ let works = await xata.db.works.getAll();
               </div>
               <div class="toolbox-text">languages</div>
             </div>
-            <div class="tool-box">
+            <div class="tool-box" transition:name="box2">
               <div class="logos_wrapper">
                 <img
                   src="images/webflow.svg"

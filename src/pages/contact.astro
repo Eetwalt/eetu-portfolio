@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ContactForm from "../components/ContactForm.svelte"
+import ContactForm from "../components/ContactForm.svelte";
 
 import { fade } from "astro:transitions";
 
@@ -8,19 +8,40 @@ const pageTitle = "Contact Eetu Rantanen | Web Developer from Tampere";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <div class="section cc-home-header">
-        <div class="custom-container" transition:name="hero" transition:animate={fade({ duration: "0.4s" })}>
-          <div class="row row-justify-center">
-            <div class="col col-lg-8 col-md-12">
-              <div class="u-text-center u-mb-3">
-                <h1 class="h2" transition:name="hero-title">Contact me</h1>
-                <p transition:name="hero-desc" class="u-mb-3">Let me know what you need, I'll get back to you as soon as possible!</p>
-              </div>
-                <div class="blog-content-wrapper">
-                    <ContactForm client:load/>
-                </div>
+  <div class="section cc-home-header">
+    <div
+      class="custom-container"
+      transition:name="hero"
+      transition:animate={fade({ duration: "0.4s" })}
+    >
+      <div class="row">
+        <div class="col col-lg-8 col-md-12">
+          <div class="card p-16 overflow-visible" transition:name="main">
+            <h1 class="h2" transition:name="hero-title">Contact me</h1>
+            <p transition:name="hero-desc">
+              Let me know what you need, I'll get back to you as soon as
+              possible!
+            </p>
+            <div
+              class="card p-4 max-w-xs bg-class"
+              style="position: absolute; top: -2rem;"
+            >
+              <p transition:name="hero-subtitle">Happy to help!</p>
             </div>
+          </div>
+          <div class="card p-16 overflow-visible">
+            <ContactForm client:load />
+          </div>
+        </div>
+        <div class="col col-lg-4 col-md-12">
+          <div class="card p-8 overflow-visible gap-1" transition:name="box1">
+              <h3 class="h3">Socials</h3>
+              <a href="https://www.linkedin.com/in/eetu-rantanen-mbw/" class="text-link">linkedin</a>
+              <a href="https://twitter.com/rantasen_eetu" class="text-link">x(twitter)</a>
+              <a href="https://github.com/Eetwalt" class="text-link">github</a>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </BaseLayout>

@@ -7,7 +7,7 @@ import { ViewTransitions } from "astro:transitions";
 import Navigation from "../components/Navigation.svelte";
 import Footer from "../components/Footer.astro";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, bodyClass } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,7 +20,7 @@ const { pageTitle } = Astro.props;
     <link href="images/webclip-er.png" rel="apple-touch-icon" />
     <ViewTransitions />
   </head>
-  <body>
+  <body style=`${bodyClass}`>
     <Navigation client:only />
     <div class="page-wrapper cc-light" style="min-height: 77vh;">
       <slot />
