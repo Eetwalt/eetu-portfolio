@@ -2125,6 +2125,10 @@ figure {
     width: 80%;
   }
 
+  .stat-card {
+    max-height: none;
+  }
+
   .image-wrapper.cc-about-home {
   }
 
@@ -2494,6 +2498,8 @@ figure {
     position: relative;
     width: 100%;
     text-align: center;
+    padding-right: 0px;
+    padding-top: 8rem;
   }
 
   .about-content-wrapper.is-right {
