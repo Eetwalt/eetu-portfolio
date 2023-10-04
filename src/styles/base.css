@@ -2680,6 +2680,10 @@ figure {
     padding-right: 7%;
   }
 
+  .section.cc-home-header {
+    padding-top: 10rem;
+  }
+
   .home_header_box {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
