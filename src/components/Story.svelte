@@ -218,7 +218,7 @@
         teens <span class="eyebrow">2010-2015</span>
         <a href="#teens" class="skip-button" aria-label="skip" on:click={skipPhrase1} on:keypress={skipPhrase1}>skip</a>
       </h3>
-      <p class="u-mb-3">{@html typedChar1}</p>
+      <p class="u-text-justify u-mb-3">{@html typedChar1}</p>
     </div>
     <div class="story-section {isVisible2 ? 'visible' : ''}" id="youngAdult">
       <h3 class="h3 u-mb-1" style="opacity: {heading2Opacity}">
