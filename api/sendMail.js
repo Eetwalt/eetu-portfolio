@@ -1,6 +1,6 @@
 import postmark from 'postmark';
 
-export default async function (req: any, res: any) {
+export default async function (req, res) {
   try {
     const { first_name, last_name, email, phone, company, message } = req.body;
 
