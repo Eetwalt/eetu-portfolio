@@ -2273,18 +2273,6 @@ figure {
     margin-top: 6rem;
     grid-template-columns: 1fr 1fr;
   }
-
-  .tag.cc-project-type {
-    right: 0.5rem;
-    opacity: 1;
-    border: 1px solid #f6f1ee;
-  }
-
-  .tag.cc-project-name {
-    left: 0.5rem;
-    opacity: 1;
-    border: 1px solid #f6f1ee;
-  }
 }
 
 @media screen and (max-width: 767px) {
