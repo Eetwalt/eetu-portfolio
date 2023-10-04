@@ -1085,7 +1085,6 @@ figure {
   margin-bottom: 1em;
   display: flex;
   position: relative;
-  overflow: auto;
   box-shadow: -4px 4px #333;
 }
 
