@@ -1,7 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CommentSection from "../../components/CommentSection.svelte";
 import { XataClient } from "../../xata";
 import { marked } from 'marked';
+
+const xata = new XataClient({
+    apiKey: import.meta.env.XATA_API_KEY,
+    branch: import.meta.env.XATA_BRANCH,
+});
 
 export async function getStaticPaths() {
   const xata = new XataClient({
@@ -40,6 +46,8 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
+
+const comments = await xata.db.comments.filter({ 'blogPost.slug': post.slug }).getMany();
 
 const markdown = marked.parse(post.content);
 ---
@@ -94,7 +102,7 @@ const markdown = marked.parse(post.content);
               >Leave a comment</a
             >
           </div>
-          <div class="u-text-center"></div>
+          <CommentSection comments={comments} post={post} client:load />
         </div>
       </div>
     </div>

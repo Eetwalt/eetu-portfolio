@@ -19,6 +19,7 @@ const tables = [
       { name: "content", type: "text" },
       { name: "slug", type: "string", unique: true },
     ],
+    revLinks: [{ column: "blogPost", table: "comments" }],
   },
   {
     name: "works",
@@ -36,6 +37,16 @@ const tables = [
       { name: "screenshots", type: "file[]" },
     ],
   },
+  {
+    name: "comments",
+    columns: [
+      { name: "blogPost", type: "link", link: { table: "blogPosts" } },
+      { name: "author", type: "string" },
+      { name: "comment", type: "text" },
+      { name: "replyToComment", type: "link", link: { table: "comments" } },
+    ],
+    revLinks: [{ column: "replyToComment", table: "comments" }],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -47,9 +58,13 @@ export type BlogPostsRecord = BlogPosts & XataRecord;
 export type Works = InferredTypes["works"];
 export type WorksRecord = Works & XataRecord;
 
+export type Comments = InferredTypes["comments"];
+export type CommentsRecord = Comments & XataRecord;
+
 export type DatabaseSchema = {
   blogPosts: BlogPostsRecord;
   works: WorksRecord;
+  comments: CommentsRecord;
 };
 
 const DatabaseClient = buildClient();
