@@ -4,7 +4,6 @@ import CtaSection from "../../components/CtaSection.astro";
 import WorkGrid from "../../components/WorkGrid.astro"
 import { XataClient } from '../../xata';
 import { marked } from 'marked';
-import Lightbox from '@julian_cataldo/astro-lightbox/Lightbox.astro';
 
 
 const xata = new XataClient({
@@ -38,7 +37,7 @@ let works = await xata.db.works.getAll();
 const pageTitle = work.name + " - Web Development Project";
 const bodyClass = "overflow: hidden;"
 ---
-<Lightbox />
+
 <BaseLayout pageTitle={pageTitle} bodyClass={bodyClass}>
     <section id="work" class="section cc-projects">
       <WorkGrid works={works} gridClass='workpage-work-grid mt-0'/>
@@ -80,9 +79,9 @@ const bodyClass = "overflow: hidden;"
                 <div class="flex flex-col gap-4">
                   {
                     work?.screenshots.map((screenshot: any) => (
-                      <div class="image-wrapper cc-border" data-lightbox="true">
+                      <div class="image-wrapper cc-border">
                         <img src={`${screenshot.url}`} class="full-image" />
-                        <div class="absolute bottom-0 left-0 px-4 py-1 bg-gray-100 text-sm border border-b-0 border-l-0 border-gray-600">Click to open full screen</div>
+                        <div class="hidden absolute bottom-0 left-0 px-4 py-1 bg-gray-100 text-sm border border-b-0 border-l-0 border-gray-600">Click to open full screen</div>
                       </div>
                     ))
                   }
