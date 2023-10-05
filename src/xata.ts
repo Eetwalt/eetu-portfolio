@@ -33,6 +33,7 @@ const tables = [
       { name: "content", type: "text" },
       { name: "siteLink", type: "string" },
       { name: "slug", type: "string" },
+      { name: "screenshots", type: "file[]" },
     ],
   },
 ] as const;

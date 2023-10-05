@@ -5,7 +5,7 @@ const { work } = Astro.props;
 ---
 
 <a  
-  transition:name={`${work.slug}-card`} id="project-wrapper" href={'/works/' + work.slug} 
+  id="project-wrapper" href={'/works/' + work.slug} 
   class={`image-wrapper cc-projects ${work.sizeclass}`}
 >
     <img 
