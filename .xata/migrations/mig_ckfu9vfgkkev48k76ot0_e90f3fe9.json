@@ -1,0 +1,18 @@
+{
+  "id": "mig_ckfu9vfgkkev48k76ot0",
+  "parentID": "mig_ckfg0bvgkkev48k74hug",
+  "checksum": "1:e90f3fe97b4ca96315508584bfe016cf93d99a45503625b639ddd04ce1ae59df",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "isAdmin",
+          "type": "bool",
+          "notNull": true,
+          "defaultValue": "false"
+        },
+        "table": "comments"
+      }
+    }
+  ]
+}

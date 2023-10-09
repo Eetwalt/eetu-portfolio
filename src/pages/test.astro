@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { createClient } from "@supabase/supabase-js";
+
+const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
+
+const supabase = createClient (import.meta.env.SUPABASE_URL, import.meta.env.SUPABASE_ANON_KEY);
+
+let { data: works, error } = await supabase
+  .from('works')
+  .select('*')
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>Hello!</h1>
+
+  <div>
+    <ul>
+        {works?.map((work: any) => 
+            <li>{work.name}</li>
+        )}
+</ul>
+</div>
+</BaseLayout>

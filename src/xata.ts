@@ -44,6 +44,7 @@ const tables = [
       { name: "author", type: "string" },
       { name: "comment", type: "text" },
       { name: "replyToComment", type: "link", link: { table: "comments" } },
+      { name: "isAdmin", type: "bool", notNull: true, defaultValue: "false" },
     ],
     revLinks: [{ column: "replyToComment", table: "comments" }],
   },
