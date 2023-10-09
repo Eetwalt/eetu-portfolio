@@ -5,31 +5,19 @@ const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.
 const { data: posts, error } = await supabase
     .from('blogPosts')
     .select('*')
-
-const { data, error3 } = await supabase
-    .storage
-    .from('images')
-    .list('blog', {
-    limit: 100,
-    offset: 0,
-    sortBy: { column: 'name', order: 'asc' },
-})
-console.log(data)
-
-
 ---
 
 <div class="row">
     {posts.map((post: any) =>
         <div class="col col-lg-4 col-md-6 col-sm-12">
-            <div class="card">
-                <div class="card-body" transition:name={`${post.slug}-card`}>
+            <div class="card pb-4">
+                <div class="card-body p-4" transition:name={`${post.slug}-card`}>
                     <div class="image-wrapper cc-about-home">
-                        
                         <img
                             transition:name="aboutImage"
+                            src={post.imageUrl}
                             loading="lazy"
-                            class="full-image cc-portrait"
+                            class="full-image cc-portrait aspect-video"
                         />
                         <div class="image-overlay cc-about"></div>
                     </div>

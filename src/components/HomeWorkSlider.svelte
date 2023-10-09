@@ -36,8 +36,8 @@
             id="project-wrapper" href={'/works/' + work.slug} 
             >
                 <img 
-                    src={work.image.url} loading="lazy" 
-                    srcset={`${work.image.url} 500w, ${work.image.url} 800w, ${work.image.url} 1080w, ${work.image.url} 1600w, ${work.image.url} 1920w`} 
+                    src={work.imageUrl} loading="lazy" 
+                    srcset={`${work.imageUrl} 500w, ${work.imageUrl} 800w, ${work.imageUrl} 1080w, ${work.imageUrl} 1600w, ${work.imageUrl} 1920w`} 
                     alt={work.altText} 
                     class="full-image cc-project {index === currentActiveSlide ? "is-focused" : ""}"
                 />

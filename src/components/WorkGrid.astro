@@ -6,6 +6,7 @@ const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.
 let { data: works, error } = await supabase
   .from('works')
   .select('*')
+  .order('order')
 
 const { gridClass } = Astro.props;
 ---

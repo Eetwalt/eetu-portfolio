@@ -10,7 +10,8 @@ const pageTitle = "Web Development Projects | Web Developer from Tampere";
 const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 let { data: works, error } = await supabase
   .from('works')
-  .select('*')
+  .select('order')
+  .order('order', {ascending: false})
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -34,7 +35,7 @@ let { data: works, error } = await supabase
               class="card p-4 px-8 max-w-xs bg-class"
               style="position: absolute; top: -2rem;"
             >
-              <p transition:name="hero-subtitle">past projects</p>
+              <p transition:name="hero-subtitle" class="mb-0">past projects</p>
             </div>
           </div>
         </div>

@@ -3,14 +3,13 @@ import WorkTags from './WorksTags.svelte';
 
 const { work } = Astro.props;
 ---
-<p>{work.image}</p>
 <a  
   id="project-wrapper" href={'/works/' + work.slug} 
   class={`image-wrapper cc-projects ${work.sizeclass}`}
 >
     <img 
-        src={work.image} loading="lazy" 
-        srcset={`${work.image} 500w, ${work.image} 800w, ${work.image} 1080w, ${work.image} 1600w, ${work.image} 1920w`} 
+        src={work.imageUrl} loading="lazy" 
+        srcset={`${work.imageUrl} 500w, ${work.imageUrl} 800w, ${work.imageUrl} 1080w, ${work.imageUrl} 1600w, ${work.imageUrl} 1920w`} 
         alt={work.altText} 
         class="full-image cc-project" 
     />

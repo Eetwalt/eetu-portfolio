@@ -173,17 +173,17 @@
         }
     };
 
-    const startTyping1 = () => {isVisible1 = true; typewriter1 = setInterval(typeChar1, 20)};
+    const startTyping1 = () => {isVisible1 = true; typewriter1 = setInterval(typeChar1, 15)};
     const startTyping2 = () => {
         isVisible2 = true; 
         setTimeout(() => {
-            typewriter2 = setInterval(typeChar2, 20)
+            typewriter2 = setInterval(typeChar2, 15)
         }, 1000);
     };
     const startTyping3 = () => {
         isVisible3 = true; 
         setTimeout(() => {
-            typewriter3 = setInterval(typeChar3, 20)
+            typewriter3 = setInterval(typeChar3, 15)
         }, 1000);
     };
 
@@ -216,21 +216,21 @@
     <div class="story-section {isVisible1 ? 'visible' : ''}" id="teens" use:inview={options} on:inview_enter={() => startTyping1()}>
       <h3 class="h3 u-mb-1" style="opacity: {heading1Opacity}">
         teens <span class="eyebrow">2010-2015</span>
-        <a href="#teens" class="skip-button" aria-label="skip" on:click={skipPhrase1} on:keypress={skipPhrase1}>skip</a>
+        <button class="skip-button" aria-label="skip" on:click={skipPhrase1} on:keypress={skipPhrase1}>skip</button>
       </h3>
       <p class="u-text-justify u-mb-3">{@html typedChar1}</p>
     </div>
     <div class="story-section {isVisible2 ? 'visible' : ''}" id="youngAdult">
       <h3 class="h3 u-mb-1" style="opacity: {heading2Opacity}">
         young adult <span class="eyebrow">2015-2020</span>
-        <a href="#youngAdult" class="skip-button" aria-label="skip" on:click={skipPhrase2} on:keypress={skipPhrase2}>skip</a>
+        <button class="skip-button" aria-label="skip" on:click={skipPhrase2} on:keypress={skipPhrase2}>skip</button>
       </h3>
       <p class="u-text-justify u-mb-3">{@html typedChar2}</p>
     </div>
     <div class="story-section {isVisible3 ? 'visible' : ''}" id="adult">
       <h3 class="h3 u-mb-1" style="opacity: {heading3Opacity}">
         adult <span class="eyebrow">2020-present</span>
-        <a href="#adult" class="skip-button" aria-label="skip" on:click={skipPhrase3} on:keypress={skipPhrase3}>skip</a>
+        <button class="skip-button" aria-label="skip" on:click={skipPhrase3} on:keypress={skipPhrase3}>skip</button>
       </h3>
       <p class="u-text-justify u-mb-3">{@html typedChar3}</p>
     </div>
