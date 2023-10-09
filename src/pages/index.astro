@@ -1,19 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { XataClient } from "../xata";
 import HomeWorkSlider from "../components/HomeWorkSlider.svelte";
 import NumberCounter from "../components/NumberCounter.svelte";
 import CtaSection from "../components/CtaSection.astro";
+import { createClient } from "@supabase/supabase-js";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
-
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH,
-});
-
-let works = await xata.db.works.getAll();
+const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+let { data: works, error } = await supabase
+  .from('works')
+  .select('*')
 ---
 
 <BaseLayout pageTitle={pageTitle}>

@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CommentSection from "../../components/CommentSection.svelte";
 import { XataClient } from "../../xata";
+import { createClient } from "@supabase/supabase-js";
 import { marked } from "marked";
 
 const xata = new XataClient({
@@ -9,12 +10,16 @@ const xata = new XataClient({
   branch: import.meta.env.XATA_BRANCH,
 });
 
+const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+let { data: blogPosts, error } = await supabase
+    .from('blogPosts')
+    .select('*')
+
 export async function getStaticPaths() {
-  const xata = new XataClient({
-    apiKey: import.meta.env.XATA_API_KEY,
-    branch: import.meta.env.XATA_BRANCH,
-  });
-  const posts = await xata.db.blogPosts.getAll();
+  const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  let { data: posts, error } = await supabase
+    .from('blogPosts')
+    .select('*')
 
   const routes = posts.map(
     ({
@@ -63,7 +68,7 @@ const markdown = marked.parse(post.content);
       <div class="row row-justify-center">
         <div class="col col-lg-8 col-md-12">
           <div class="date-text cc-blogpage">
-            {post?.publishDate.toLocaleDateString("fi-FI")}
+            {post?.publishDate}
           </div>
           <h1 class="blog-heading" transition:name={`${post?.slug}-title`}>
             {post?.title}
@@ -74,13 +79,13 @@ const markdown = marked.parse(post.content);
           >
             <div class="blog-header relative">
               <div class="blog-tags">
-                {
+                <!--{
                   post?.tags.map((tag: any) => (
                     <a href="#" class="tag-link">
                       #{tag}
                     </a>
                   ))
-                }
+                }-->
               </div>
               <a href="#" class="btn cc-light cc-smaller w-button flex gap-4">
                 Share on
@@ -94,7 +99,7 @@ const markdown = marked.parse(post.content);
                 <div class="image-wrapper cc-story">
                   <img
                     style="max-height: 20rem;"
-                    src={post?.postImage?.url}
+                    src=`https://qixapdjpuoidwayatqcl.supabase.co/storage/v1/object/public/post-images/maptionnaire.webp`
                     loading="eager"
                     alt={post?.altText}
                     class="full-image"

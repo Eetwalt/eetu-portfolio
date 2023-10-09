@@ -3,16 +3,14 @@ import { fade } from "astro:transitions";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaSection from "../components/CtaSection.astro";
 import PostList from "../components/PostList.astro";
-import { XataClient } from '../xata';
- 
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH
-});
- 
-let posts = await xata.db.blogPosts.getAll();
+import { createClient } from "@supabase/supabase-js";
 
 const pageTitle = "Web Dev Micro Blog | Web Developer from Tampere";
+
+const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+let { data: posts, error } = await supabase
+  .from('BlogPosts')
+  .select('*')
 ---
 
 <BaseLayout pageTitle={pageTitle}>

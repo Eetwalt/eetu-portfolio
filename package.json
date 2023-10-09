@@ -19,10 +19,9 @@
     "@xata.io/client": "^0.26.6",
     "astro": "^3.1.2",
     "astro-icon": "^0.8.1",
-    "drizzle-orm": "^0.28.6",
+    "dotenv": "^16.3.1",
     "marked": "^9.0.3",
     "nanostores": "^0.9.3",
-    "postgres": "^3.3.5",
     "postmark": "^3.0.19",
     "svelte": "^4.0.0",
     "svelte-inview": "^4.0.1",
@@ -31,10 +30,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@vercel/node": "^3.0.6",
-    "drizzle-kit": "^0.19.13",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0",
-    "sass": "^1.68.0",
     "vercel": "^32.3.1"
   }
 }

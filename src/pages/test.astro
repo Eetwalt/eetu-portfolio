@@ -1,14 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { createClient } from "@supabase/supabase-js";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
-
-const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-
-let { data: works, error } = await supabase
-  .from('works')
-  .select('*')
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -16,9 +9,7 @@ let { data: works, error } = await supabase
 
   <div>
     <ul>
-        {works?.map((work: any) => 
-            <li>{work.name}</li>
-        )}
-</ul>
-</div>
+        
+    </ul>
+  </div>
 </BaseLayout>
