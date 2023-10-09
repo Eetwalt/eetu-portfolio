@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
-const supabase = createClient (import.meta.env.SUPABASE_URL, import.meta.env.SUPABASE_ANON_KEY);
+const supabase = createClient ("https://qixapdjpuoidwayatqcl.supabase.co", import.meta.env.SUPABASE_ANON_KEY);
 
 let { data: works, error } = await supabase
   .from('works')
