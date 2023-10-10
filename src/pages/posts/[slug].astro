@@ -71,7 +71,13 @@ const markdown = marked.parse(post.content);
                   ))
                 }
               </div>
-              <a href="#" class="btn cc-light cc-smaller w-button flex gap-4">
+              <a
+                href=`
+                    https://twitter.com/intent/tweet?text=${post.title}%20https://www.eeturantanen.dev/posts/${post.slug}%20%23webdevelopment
+                    `
+                target="_blank"
+                class="btn cc-light cc-smaller w-button flex gap-4 mb-0"
+              >
                 Share on
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,4 +125,3 @@ const markdown = marked.parse(post.content);
     </div>
   </div>
 </BaseLayout>
- ../../lib/supabase

@@ -17,6 +17,7 @@ let { data: works, error } = await supabase.from("works").select("*");
         <div
           class="col col-no-gutters col-shrink col-md-12 card overflow-visible"
           transition:name="main"
+          style="box-shadow: -8px 8px #333"
         >
           <div class="home_header_box">
             <div class="bracket-image-wrapper" transition:name="bracket">
@@ -289,4 +290,3 @@ let { data: works, error } = await supabase.from("works").select("*");
     border-radius: 0px;
   }
 </style>
- ../lib/supabaseClient

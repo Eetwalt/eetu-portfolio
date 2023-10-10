@@ -31,6 +31,7 @@ export async function getStaticPaths() {
           altText,
           siteLink,
           screenshots,
+          slug,
         },
       };
     }
@@ -81,7 +82,10 @@ const bodyClass = "overflow: hidden;";
                     <p class="mb-0">Visit live site</p>
                   </a>
                   <a
-                    href="#"
+                    href=`
+                    https://twitter.com/intent/tweet?text=Check%20out%20this%20project%20from%20Eetus%20Portfolio:%20https://www.eeturantanen.dev/works/${work.slug}%20%23webdevelopment
+                    `
+                    target="_blank"
                     class="btn cc-light cc-smaller w-button flex gap-4 mb-0"
                   >
                     Share on
@@ -123,7 +127,7 @@ const bodyClass = "overflow: hidden;";
                   <a
                     href="https://www.kuasi.fi/"
                     target="_blank"
-                    class="tag cc-project-type-onpage"
+                    class="tag cc-project-type-onpage mr-auto"
                   >
                     {work.type}
                   </a>
@@ -174,4 +178,3 @@ const bodyClass = "overflow: hidden;";
     </div>
   </section>
 </BaseLayout>
- ../../lib/supabase

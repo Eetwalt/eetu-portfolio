@@ -21,6 +21,7 @@
     "marked": "^9.0.3",
     "nanostores": "^0.9.3",
     "postmark": "^3.0.19",
+    "satori": "^0.10.9",
     "svelte": "^4.0.0",
     "svelte-inview": "^4.0.1",
     "tailwindcss": "^3.3.3"
