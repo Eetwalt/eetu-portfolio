@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 settings:
-  autoInstallPeers: false
+  autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
@@ -14,18 +14,12 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^5.0.1
     version: 5.0.1(astro@3.1.2)
-  '@julian_cataldo/astro-lightbox':
-    specifier: ^0.10.11
-    version: 0.10.11
   '@splidejs/svelte-splide':
     specifier: ^0.2.9
     version: 0.2.9
   '@supabase/supabase-js':
     specifier: ^2.38.0
     version: 2.38.0
-  '@xata.io/client':
-    specifier: ^0.26.6
-    version: 0.26.6(typescript@5.2.2)
   astro:
     specifier: ^3.1.2
     version: 3.1.2(@types/node@14.18.33)
@@ -58,6 +52,9 @@ devDependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
+  '@types/cookie':
+    specifier: ^0.5.2
+    version: 0.5.2
   '@vercel/node':
     specifier: ^3.0.6
     version: 3.0.6
@@ -884,10 +881,6 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@julian_cataldo/astro-lightbox@0.10.11:
-    resolution: {integrity: sha512-S/6A8BByJqjzaw90IsBDJOfvaz0TnnfkabeudAYlnYnQgSztpcjwvalqyi77vu9IgJ9GZBv3vpa2dDgloA2UAA==}
-    dev: false
-
   /@mapbox/node-pre-gyp@1.0.11:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
@@ -1110,6 +1103,10 @@ packages:
     dependencies:
       '@babel/types': 7.22.19
     dev: false
+
+  /@types/cookie@0.5.2:
+    resolution: {integrity: sha512-DBpRoJGKJZn7RY92dPrgoMew8xCWc2P71beqsjyhEI/Ds9mOyVmBwtekyfhpwFIVt1WrxTonFifiOZ62V8CnNA==}
+    dev: true
 
   /@types/debug@4.1.9:
     resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
@@ -1389,14 +1386,6 @@ packages:
       json-schema-to-ts: 1.6.4
       ts-morph: 12.0.0
     dev: true
-
-  /@xata.io/client@0.26.6(typescript@5.2.2):
-    resolution: {integrity: sha512-6YMAOSTGGO4Mwh/J8357l0jSssp3SXwyEPJu1gMr051GB/oV/l2/RAwLNwKyIhHivfvCfAmvUWXNt2j1PthglA==}
-    peerDependencies:
-      typescript: '>=4.5'
-    dependencies:
-      typescript: 5.2.2
-    dev: false
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -4407,6 +4396,7 @@ packages:
   /punycode@2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
+    requiresBuild: true
     dev: true
 
   /queue-microtask@1.2.3:
