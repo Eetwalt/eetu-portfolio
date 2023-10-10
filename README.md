@@ -3,8 +3,9 @@
 ## Stack:
 - Astro
 - Svelte
+- Supabase
 - Tailwind
 - Vercel
 - Postmark
 
-Happy browsing
+Happy browsing!
