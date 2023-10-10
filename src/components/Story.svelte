@@ -240,14 +240,4 @@
     .h3 {
       transition: opacity 0.5s ease; /* Add a smooth transition effect */
     }
-
-    .story-section {
-        overflow: hidden; /* Hide overflowing content */
-        max-height: 0; /* Initially hide the content */
-        transition: max-height 0.5s ease; /* Apply a smooth transition to max-height */
-    }
-    
-    .story-section.visible {
-        max-height: 1200px; /* Set a maximum height to reveal the content smoothly */
-    }
 </style>
