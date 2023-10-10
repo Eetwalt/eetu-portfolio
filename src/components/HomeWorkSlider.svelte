@@ -24,7 +24,8 @@
         pagination: false,
         breakpoints: {
             640: {
-                padding: '10%',
+                padding: '5%',
+                drag: false,
             },
         }
     }}

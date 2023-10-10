@@ -59,7 +59,7 @@ const bodyClass = "overflow: hidden;";
           <div class="col col-lg-9 col-md-12">
             <div class="blog-content-wrapper flex flex-col">
               <div class="blog-header">
-                <div class="flex gap-8">
+                <div class="flex gap-2 md:gap-8 flex-col md:flex-row justify-start items-start">
                   <a
                     href={`${work.siteLink}`}
                     target="_blank"
@@ -154,7 +154,7 @@ const bodyClass = "overflow: hidden;";
               <div class="blog-richtext w-richtext">
                 <article
                   set:html={markdown}
-                  class="max-w-none prose prose-li:text-gray-800 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"
+                  class="max-w-none prose prose-li:text-gray-800 md:prose-ul:list-inside md:prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"
                 />
               </div>
               {
