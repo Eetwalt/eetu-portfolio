@@ -1,25 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CommentSection from "../../components/CommentSection.svelte";
-import { XataClient } from "../../xata";
 import { createClient } from "@supabase/supabase-js";
 import { marked } from "marked";
-
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH,
-});
-
-const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-let { data: blogPosts, error } = await supabase
-    .from('blogPosts')
-    .select('*')
+import supabase from "../../lib/supabase";
 
 export async function getStaticPaths() {
-  const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-  let { data: posts, error } = await supabase
-    .from('blogPosts')
-    .select('*')
+  let { data: posts, error } = await supabase.from("blogPosts").select("*");
 
   const routes = posts.map(
     ({
@@ -30,7 +17,7 @@ export async function getStaticPaths() {
       content,
       tags,
       publishDate,
-      postImage,
+      imageUrl,
       altText,
     }) => {
       return {
@@ -43,21 +30,18 @@ export async function getStaticPaths() {
           content,
           publishDate,
           tags,
-          postImage,
+          imageUrl,
           altText,
         },
       };
     }
   );
-
   return routes;
 }
 
 const post = Astro.props;
 
-const postComments = await xata.db.comments
-  .filter({ "blogPost.slug": post.slug })
-  .getMany();
+let { data: postComments } = await supabase.from("comments").select("*");
 
 const markdown = marked.parse(post.content);
 ---
@@ -77,32 +61,40 @@ const markdown = marked.parse(post.content);
             class="card px-6 py-8 md:px-8"
             transition:name={`${post?.slug}-card`}
           >
-            <div class="blog-header relative">
+            <div class="flex justify-between mb-4">
               <div class="blog-tags">
-                <!--{
+                {
                   post?.tags.map((tag: any) => (
-                    <a href="#" class="tag-link">
+                    <a href="#" class="tag-link mb-0">
                       #{tag}
                     </a>
                   ))
-                }-->
+                }
               </div>
               <a href="#" class="btn cc-light cc-smaller w-button flex gap-4">
                 Share on
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="none" viewBox="0 0 24 22">
-                  <path fill="#333" d="M18.901 0h3.68l-8.04 9.19L24 21.693h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 0h7.594l5.243 6.932L18.901 0ZM17.61 19.491h2.039L6.486 2.087H4.298L17.61 19.491Z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="22"
+                  fill="none"
+                  viewBox="0 0 24 22"
+                >
+                  <path
+                    fill="#333"
+                    d="M18.901 0h3.68l-8.04 9.19L24 21.693h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 0h7.594l5.243 6.932L18.901 0ZM17.61 19.491h2.039L6.486 2.087H4.298L17.61 19.491Z"
+                  ></path>
                 </svg>
               </a>
             </div>
             {
-              post.postImage && (
-                <div class="image-wrapper cc-story">
+              post.imageUrl && (
+                <div class="border border-solid border-gray-800 mb-8">
                   <img
-                    style="max-height: 20rem;"
-                    src=`https://qixapdjpuoidwayatqcl.supabase.co/storage/v1/object/public/post-images/maptionnaire.webp`
-                    loading="eager"
-                    alt={post?.altText}
-                    class="full-image"
+                    transition:name={`${post.slug}-image`}
+                    src={post.imageUrl}
+                    loading="lazy"
+                    class="full-image aspect-video"
                   />
                 </div>
               )
@@ -127,3 +119,4 @@ const markdown = marked.parse(post.content);
     </div>
   </div>
 </BaseLayout>
+ ../../lib/supabase

@@ -3,14 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HomeWorkSlider from "../components/HomeWorkSlider.svelte";
 import NumberCounter from "../components/NumberCounter.svelte";
 import CtaSection from "../components/CtaSection.astro";
-import { createClient } from "@supabase/supabase-js";
+import supabase from "../lib/supabase";
 
 const pageTitle = "Eetu Rantanen | Web Developer from Tampere";
 
-const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-let { data: works, error } = await supabase
-  .from('works')
-  .select('*')
+let { data: works, error } = await supabase.from("works").select("*");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -127,41 +124,45 @@ let { data: works, error } = await supabase
         <h2 class="h2 u-mb-0">projects</h2>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">web dev</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">projects</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">web dev</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
     </div>
     <div class="marquee-content scroll">
@@ -169,41 +170,45 @@ let { data: works, error } = await supabase
         <div class="h2 u-mb-0">projects</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">web dev</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">projects</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
       <div>
         <div class="h2 u-mb-0">web dev</div>
       </div>
       <div class="bracket-image-wrapper cc-marquee">
-        <img
-          src="images/bracket--code-angle-programming-file-bracket.svg"
-          loading="lazy"
-          alt=""
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="85" height="52" viewBox="0 0 85 52" fill="none">
+          <g id="bracket--code-angle-programming-file-bracket">
+          <path id="Vector" d="M25.6898 45L6.25977 25.57L25.6898 6.13989" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          <path id="Vector_2" d="M58.9985 45L78.4286 25.5699L58.9985 6.13988" stroke="#f6f1ee" stroke-width="8.6819" stroke-linecap="square"/>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -284,3 +289,4 @@ let { data: works, error } = await supabase
     border-radius: 0px;
   }
 </style>
+ ../lib/supabaseClient

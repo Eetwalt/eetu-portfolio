@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { fade } from "astro:transitions";
+
+const pageTitle = "Contact Eetu Rantanen | Web Developer from Tampere";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="section cc-home-header">
+    <div
+      class="custom-container"
+      transition:name="hero"
+      transition:animate={fade({ duration: "0.4s" })}
+    >
+      <div class="row">
+        <div class="col col-lg-8 col-md-12">
+          <div class="card p-8 pt-16 md:p-16 md:pb-8 overflow-visible" transition:name="main">
+            <h1 class="h2" transition:name="hero-title">Admin page</h1>
+            <p transition:name="hero-desc">
+              You are logged in as an admin.
+            </p>
+            <div
+              class="card p-4 px-8 max-w-xs bg-class"
+              style="position: absolute; top: -2rem;"
+            >
+              <p class="mb-0" transition:name="hero-subtitle">admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

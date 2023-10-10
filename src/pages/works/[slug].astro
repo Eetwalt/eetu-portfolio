@@ -1,95 +1,177 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaSection from "../../components/CtaSection.astro";
-import WorkGrid from "../../components/WorkGrid.astro"
-import { XataClient } from '../../xata';
-import { marked } from 'marked';
+import WorkGrid from "../../components/WorkGrid.astro";
+import supabase from "../../lib/supabase";
+import { marked } from "marked";
 
-
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH
-});
- 
 export async function getStaticPaths() {
-  const xata = new XataClient({
-    apiKey: import.meta.env.XATA_API_KEY,
-    branch: import.meta.env.XATA_BRANCH
-  });
-  const works = await xata.db.works.getAll();
- 
-  const routes = works.map(({ slug, name, content, tags, image, type, altText, siteLink, screenshots }) => {
-    return {
-      params: { slug },
-      props: { name,  content, type, tags, image, altText, siteLink, screenshots },
-    };
-  });
- 
+  let { data: works, error } = await supabase.from("works").select("*");
+
+  const routes = works.map(
+    ({
+      slug,
+      name,
+      content,
+      tags,
+      imageUrl,
+      type,
+      altText,
+      siteLink,
+      screenshots,
+    }) => {
+      return {
+        params: { slug },
+        props: {
+          name,
+          content,
+          type,
+          tags,
+          imageUrl,
+          altText,
+          siteLink,
+          screenshots,
+        },
+      };
+    }
+  );
   return routes;
 }
- 
+
 const work = Astro.props;
+
+let { data: works, error } = await supabase.from("works").select("*");
 
 const markdown = marked.parse(work.content);
 
-let works = await xata.db.works.getAll();
-
 const pageTitle = work.name + " - Web Development Project";
-const bodyClass = "overflow: hidden;"
+const bodyClass = "overflow: hidden;";
 ---
 
 <BaseLayout pageTitle={pageTitle} bodyClass={bodyClass}>
-    <section id="work" class="section cc-projects">
-      <WorkGrid works={works} gridClass='workpage-work-grid mt-0'/>
-      <CtaSection ctaClass="cc-home" />
-      <div class="modal-bg">
-        <div class="custom-container">
-          <div class="row row-justify-center">
-            <div class="col col-lg-9 col-md-12">
-              <div class="blog-content-wrapper">
-                <div class="blog-header">
-                  <div class="flex gap-8">
-                    <a href={`${work.siteLink}`} target="_blank" class="btn cc-light cc-smaller flex gap-4 font-semibold">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                      </svg>
-                      <p>Visit live site</p>
-                    </a>
-                    <a href="#" class="btn cc-light cc-smaller w-button flex gap-4">
-                      Share on
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="none" viewBox="0 0 24 22">
-                        <path fill="#333" d="M18.901 0h3.68l-8.04 9.19L24 21.693h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 0h7.594l5.243 6.932L18.901 0ZM17.61 19.491h2.039L6.486 2.087H4.298L17.61 19.491Z"/>
-                      </svg>
-                    </a>
-                  </div>
-                  <a href="/work#work" class="btn cc-light cc-smaller w-button close-button flex gap-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  <section id="work" class="section cc-projects">
+    <WorkGrid works={works} gridClass="workpage-work-grid mt-0" />
+    <CtaSection ctaClass="cc-home" />
+    <div class="modal-bg">
+      <div class="custom-container">
+        <div class="row row-justify-center">
+          <div class="col col-lg-9 col-md-12">
+            <div class="blog-content-wrapper flex flex-col">
+              <div class="blog-header">
+                <div class="flex gap-8">
+                  <a
+                    href={`${work.siteLink}`}
+                    target="_blank"
+                    class="btn cc-light cc-smaller flex gap-4 font-semibold"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+                      ></path>
+                    </svg>
+                    <p class="mb-0">Visit live site</p>
+                  </a>
+                  <a
+                    href="#"
+                    class="btn cc-light cc-smaller w-button flex gap-4 mb-0"
+                  >
+                    Share on
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="22"
+                      fill="none"
+                      viewBox="0 0 24 22"
+                    >
+                      <path
+                        fill="#333"
+                        d="M18.901 0h3.68l-8.04 9.19L24 21.693h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 0h7.594l5.243 6.932L18.901 0ZM17.61 19.491h2.039L6.486 2.087H4.298L17.61 19.491Z"
+                      ></path>
                     </svg>
                   </a>
                 </div>
-                <a href="https://www.kuasi.fi/" target="_blank" id="typeTag" class="tag cc-project-type-onpage">{work.type}</a>
-                <h1 class="blog-heading cc-work">{work.name}</h1>
-                <div class="image-wrapper cc-border u-mb-2">
-                  <img style="max-height: 30rem;" src={`${work.image.url}`} loading="lazy" srcset={`${work.image.url} 500w, ${work.image.url} 800w, ${work.image.url} 1080w, ${work.image.url} 1600w, ${work.image.url} 1920w`} alt={work.altText} class="full-image" />
-                </div>
-                <div class="blog-richtext w-richtext">
-                  <article set:html={markdown} class="max-w-none prose prose-li:text-gray-800 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"/>
-                </div>
-                <div class="flex flex-col gap-4">
-                  {
-                    work?.screenshots.map((screenshot: any) => (
-                      <div class="image-wrapper cc-border">
-                        <img src={`${screenshot.url}`} class="full-image" />
-                        <div class="hidden absolute bottom-0 left-0 px-4 py-1 bg-gray-100 text-sm border border-b-0 border-l-0 border-gray-600">Click to open full screen</div>
-                      </div>
-                    ))
-                  }
-                </div>
+                <a
+                  href="/work#work"
+                  class="btn cc-light cc-smaller w-button close-button flex gap-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </a>
               </div>
+              {
+                work.type === "kuasi project" && (
+                  <a
+                    href="https://www.kuasi.fi/"
+                    target="_blank"
+                    class="tag cc-project-type-onpage"
+                  >
+                    {work.type}
+                  </a>
+                )
+              }
+              {
+                work.type === "freelance" && (
+                  <div class="tag cc-project-type-onpage mr-auto">
+                    {work.type}
+                  </div>
+                )
+              }
+              <h1 class="blog-heading cc-work">{work.name}</h1>
+              <div class="border border-solid border-gray-800 u-mb-2">
+                <img
+                  class="aspect-video object-cover"
+                  src={`${work.imageUrl}`}
+                  loading="lazy"
+                  srcset={`${work.imageUrl} 500w, ${work.imageUrl} 800w, ${work.imageUrl} 1080w, ${work.imageUrl} 1600w, ${work.imageUrl} 1920w`}
+                  alt={work.altText}
+                  class="full-image"
+                />
+              </div>
+              <div class="blog-richtext w-richtext">
+                <article
+                  set:html={markdown}
+                  class="max-w-none prose prose-li:text-gray-800 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-purple-800 prose-blockquote:text-gray-800 prose-blockquote:border-purple-500"
+                />
+              </div>
+              {
+                work.screenshots && (
+                  <div class="flex flex-col gap-4">
+                    {work?.screenshots.map((screenshot: any) => (
+                      <div class="border border-solid border-gray-800 u-mb-2">
+                        <img src={`${screenshot}`} class="full-image" />
+                        <div class="hidden absolute bottom-0 left-0 px-4 py-1 bg-gray-100 text-sm border border-b-0 border-l-0 border-gray-600">
+                          Click to open full screen
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )
+              }
             </div>
           </div>
         </div>
-      </a>
-    </section>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+ ../../lib/supabase

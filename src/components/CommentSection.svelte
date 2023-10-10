@@ -5,8 +5,8 @@
     export let postComments: any;
 
     postComments.sort((a: any, b: any) => {
-        const dateA: Date = new Date(a.xata.createdAt);
-        const dateB: Date = new Date(b.xata.createdAt);
+        const dateA: Date = new Date(a.created_at);
+        const dateB: Date = new Date(b.created_at);
         return dateB.getTime() - dateA.getTime();
     });
 

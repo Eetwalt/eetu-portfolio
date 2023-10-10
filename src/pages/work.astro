@@ -2,16 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaSection from "../components/CtaSection.astro";
 import WorkGrid from "../components/WorkGrid.astro";
-import { XataClient } from "../xata";
-import { createClient } from "@supabase/supabase-js";
+import supabase from "../lib/supabaseClient";
 
 const pageTitle = "Web Development Projects | Web Developer from Tampere";
 
-const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 let { data: works, error } = await supabase
-  .from('works')
-  .select('order')
-  .order('order', {ascending: false})
+  .from("works")
+  .select("order")
+  .order("order", { ascending: false });
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -19,8 +17,15 @@ let { data: works, error } = await supabase
     <div class="custom-container">
       <div class="row">
         <div class="col col-lg-8 col-md-12 overflow-visible">
-          <div class="card p-8 pt-16 md:p-16 overflow-visible" transition:name="main">
-            <h1 class="h2" transition:name="hero-title" style="word-break: break-word;">
+          <div
+            class="card p-8 pt-16 md:p-16 overflow-visible"
+            transition:name="main"
+          >
+            <h1
+              class="h2"
+              transition:name="hero-title"
+              style="word-break: break-word;"
+            >
               Web Development Projects
             </h1>
             <p transition:name="hero-desc">
@@ -42,14 +47,10 @@ let { data: works, error } = await supabase
         <div class="col col-lg-4 col-md-12">
           <div class="card p-8 overflow-visible gap-1" transition:name="box1">
             <h2 class="h3">Tools in use</h2>
-            <a
-              href="https://www.linkedin.com/in/eetu-rantanen-mbw/"
-              class="text-link">Webflow</a
-            >
-            <a href="https://twitter.com/rantasen_eetu" class="text-link"
-              >Astro</a
-            >
-            <a href="https://github.com/Eetwalt" class="text-link">Sveltekit</a>
+            <a href="https://webflow.com/" class="text-link">Webflow</a>
+            <a href="https://astro.build/" class="text-link">Astro</a>
+            <a href="https://kit.svelte.dev/" class="text-link">Sveltekit</a>
+            <a href="https://supabase.com/" class="text-link">Supabase</a>
           </div>
           <div class="card p-8 overflow-visible gap-1" transition:name="box2">
             <h2 class="h3">Languages</h2>
@@ -57,13 +58,18 @@ let { data: works, error } = await supabase
               href="https://www.linkedin.com/in/eetu-rantanen-mbw/"
               class="text-link">HTML</a
             >
-            <a href="https://twitter.com/rantasen_eetu" class="text-link">CSS</a
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+              class="text-link">CSS</a
             >
-            <a href="https://github.com/Eetwalt" class="text-link">Javascript</a
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              class="text-link">Javascript</a
             >
-            <a href="https://github.com/Eetwalt" class="text-link">Typescript</a
+            <a href="https://www.typescriptlang.org/" class="text-link"
+              >Typescript</a
             >
-            <a href="https://github.com/Eetwalt" class="text-link">Svelte</a>
+            <a href="https://svelte.dev/" class="text-link">Svelte</a>
           </div>
         </div>
       </div>
@@ -74,3 +80,4 @@ let { data: works, error } = await supabase
   </section>
   <CtaSection ctaClass="cc-home" />
 </BaseLayout>
+ ../lib/supabaseClient

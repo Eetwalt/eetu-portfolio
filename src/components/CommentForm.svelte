@@ -1,4 +1,6 @@
 <script lang="ts">
+    import supabase from "../lib/supabaseClient"
+
     export let post: any;
     export let buttonText: any;
     export let comment: any;
@@ -13,34 +15,27 @@
     let errorMessage = "";
 
     async function submitComment(e: SubmitEvent, commentId?: string) {
+        e.preventDefault();
         const form = e.currentTarget as HTMLFormElement;
 
-        const formData: FormData = {
-            author: form.author.value,
-            comment: form.comment.value,
-            blogPost: post.id,
-            replyToComment: commentId,
-        };
+        
+        let authorInput = form.author.value;
+        let commentInput = form.comment.value;
+        
         try {
-            const response = await fetch("../api/comments", {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData),
-            });
+            const { data, error } = await supabase
+                .from('comments')
+                .insert({ author: authorInput, comment: commentInput, blogPost: post.id, replyToComment: commentId })
+                .select()
 
-            if (response.ok) {
+            if (!error) {
                 errorMessage = "";
-                await response.json();
-                window.location.href = `/posts/${post.slug}#comments`;
+                location.reload();
             } else {
-                const data: any = await response.json();
-                errorMessage = data.message || "Error submitting the comment";
-                console.error("Error submitting the comment");
+                errorMessage = error;
             }
         } catch (error) {
-            errorMessage = "Network error. Error sending the email";
+            errorMessage = "Network error. Error sending the comment";
             console.error('Error submitting comment:', error);
             // Provide feedback to the user, e.g., show an error message.
         }

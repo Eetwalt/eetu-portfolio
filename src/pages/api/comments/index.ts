@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
-import { XataClient } from "../../../xata";
+import { createClient } from "@supabase/supabase-js";
 
-const client = new XataClient({ apiKey: import.meta.env.XATA_API_KEY });
+const supabase = createClient (import.meta.env.NEXT_PUBLIC_SUPABASE_URL, import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   try {
