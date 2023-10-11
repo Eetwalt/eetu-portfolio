@@ -8,7 +8,9 @@ export default defineConfig({
   output: 'hybrid',
   integrations: [svelte(), tailwind()],
   adapter: vercel({
-    webAnalytics: true,
+    webAnalytics: {
+      enabled: true,
+    }, 
     functionPerRoute: true
   })
 });
